@@ -1,0 +1,104 @@
+.header {
+  height: 77px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 50px;
+}
+
+.headerleft {
+  width: 194px;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  margin-left: 6px;
+}
+
+.logo {
+  width: 10px;
+  height: 16px;
+  border: 1px solid var(--GPpink);
+}
+
+.rot45 {
+  position: absolute;
+  left: 4px;
+  top: 15px;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  transform: rotate(45deg);
+  border-radius: 8px 8px 0px 0px;
+}
+
+.rot135 {
+  position: absolute;
+  left: 18px;
+  top: 15px;
+  -ms-transform: rotate(135deg); /* IE 9 */
+  transform: rotate(135deg);
+  border-radius: 0px 0px 8px 8px;
+}
+
+.rot225 {
+  position: absolute;
+  left: 18px;
+  top: 1px;
+  -ms-transform: rotate(225deg); /* IE 9 */
+  transform: rotate(225deg);
+  border-radius: 8px 8px 0px 0px;
+}
+
+.rot315 {
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  -ms-transform: rotate(315deg); /* IE 9 */
+  transform: rotate(315deg);
+  border-radius: 0px 0px 8px 8px;
+}
+
+.gamepad {
+  width: 150px;
+  height: 45px;
+  font-size: 34px;
+  line-height: 45px;
+}
+
+.headerright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mycollection {
+  width: 125px;
+  height: 27px;
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.button-login {
+  width: 85px;
+  height: 37px;
+  background-color: var(--GPpink);
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px rgba(255, 70, 85, 0.25);
+  margin-left: 30px;
+  text-align: center;
+}
+
+.login {
+  height: 20px;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.line1 {
+  border: 2px solid var(--GPpink);
+}

@@ -20,6 +20,8 @@
   color: var(--GPtextgrey);
   font-size: 18px;
   line-height: 24px;
+  border: none;
+  outline: none;
 }
 
 .search {

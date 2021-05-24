@@ -1,0 +1,38 @@
+.search-bar {
+  width: 498px;
+  height: 99px;
+  margin: 0 auto;
+  text-align: center;
+}
+.rectangle18 {
+  height: 63px;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
+  padding: 0 21px;
+}
+.rectangle18 input {
+  width: 164px;
+  height: 24px;
+  color: var(--GPtextgrey);
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.search {
+  width: 216px;
+  height: 25px;
+  font-size: 19px;
+  line-height: 25px;
+}
+.icon-container {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--GPblackicon);
+}

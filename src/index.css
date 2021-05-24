@@ -10,7 +10,9 @@
 :root {
   --GPpink: #ff4655;
   --GPgrey: #1f2023;
+  --GPtextgrey: #6f6f6f;
   --GPblack: #171719;
+  --GPblackicon: #131c2e;
 }
 
 body {

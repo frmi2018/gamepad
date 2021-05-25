@@ -14,53 +14,16 @@
   align-items: center;
 }
 
-.logo-container {
+.headerleft .logo-container {
   width: 32px;
   height: 32px;
-  position: relative;
   margin-left: 6px;
 }
 
-.logo {
-  width: 10px;
-  height: 16px;
-  border: 1px solid var(--GPpink);
-}
-
-.rot45 {
-  position: absolute;
-  left: 4px;
-  top: 15px;
-  -ms-transform: rotate(45deg); /* IE 9 */
-  transform: rotate(45deg);
-  border-radius: 8px 8px 0px 0px;
-}
-
-.rot135 {
-  position: absolute;
-  left: 18px;
-  top: 15px;
-  -ms-transform: rotate(135deg); /* IE 9 */
-  transform: rotate(135deg);
-  border-radius: 0px 0px 8px 8px;
-}
-
-.rot225 {
-  position: absolute;
-  left: 18px;
-  top: 1px;
-  -ms-transform: rotate(225deg); /* IE 9 */
-  transform: rotate(225deg);
-  border-radius: 8px 8px 0px 0px;
-}
-
-.rot315 {
-  position: absolute;
-  left: 4px;
-  top: 1px;
-  -ms-transform: rotate(315deg); /* IE 9 */
-  transform: rotate(315deg);
-  border-radius: 0px 0px 8px 8px;
+.headerleft .logo-container img {
+  width: 32px;
+  height: 32px;
+  transform: scale(1.5);
 }
 
 .gamepad {

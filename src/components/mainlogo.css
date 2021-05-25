@@ -9,9 +9,12 @@
 .mainlogo-container .logo-container {
   width: 75px;
   height: 75px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+}
+
+.mainlogo-container .logo-container img {
+  width: 75px;
+  height: 75px;
+  transform: scale(1.5);
 }
 
 .mainlogo-container .gamepad {

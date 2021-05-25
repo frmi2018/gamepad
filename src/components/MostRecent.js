@@ -17,7 +17,8 @@ const MostRecent = (props) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/games?page=${currentPage}&ordering=added`
+          // `http://localhost:4000/games?page=${currentPage}&ordering=added`
+          `https://express-gamepad.herokuapp.com/games?page=${currentPage}&ordering=added`
         );
         // console.log(response.data);
         setData(response.data);

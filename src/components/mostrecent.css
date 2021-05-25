@@ -1,7 +1,6 @@
 .five-games-container {
   height: 298px;
   margin: 35px 0;
-  background-color: burlywood;
 }
 
 .title-section {
@@ -9,6 +8,7 @@
   font-size: 30px;
   line-height: 40px;
 }
+
 .container7 {
   height: 250px;
   display: flex;

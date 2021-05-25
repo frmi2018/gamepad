@@ -1,23 +1,12 @@
 import "./mainlogo.css";
-import "./logo.css";
+import logo from "../assets/logo.svg";
 
 const MainLogo = () => {
   return (
     <>
       <div className="mainlogo-container">
         <div className="logo-container">
-          <div className="logo">
-            <div className="vector"></div>
-          </div>
-          <div className="logo">
-            <div className="vector"></div>
-          </div>
-          <div className="logo">
-            <div className="vector"></div>
-          </div>
-          <div className="logo">
-            <div className="vector"></div>
-          </div>
+          <img src={logo} alt="logo gamepad" />
         </div>
         <span className="gamepad exo">Gamepad</span>
       </div>

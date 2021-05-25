@@ -1,5 +1,5 @@
 import "./header.css";
-import "./logo.css";
+import logo from "../assets/logo.svg";
 
 const Header = () => {
   return (
@@ -7,18 +7,7 @@ const Header = () => {
       <div className="header">
         <div className="headerleft">
           <div className="logo-container">
-            <div className="logo">
-              <div className="vector"></div>
-            </div>
-            <div className="logo">
-              <div className="vector"></div>
-            </div>
-            <div className="logo">
-              <div className="vector"></div>
-            </div>
-            <div className="logo">
-              <div className="vector"></div>
-            </div>
+            <img src={logo} alt="logo gamepad" />
           </div>
           <span className="gamepad exo fw400">Gamepad</span>
         </div>

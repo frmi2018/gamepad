@@ -15,20 +15,13 @@
   padding: 0 21px;
 }
 .rectangle18 input {
-  width: 164px;
   height: 24px;
   color: var(--GPtextgrey);
   font-size: 18px;
   line-height: 24px;
   border: none;
   outline: none;
-}
-
-.search {
-  width: 216px;
-  height: 25px;
-  font-size: 19px;
-  line-height: 25px;
+  flex: 1;
 }
 .icon-container {
   width: 35px;

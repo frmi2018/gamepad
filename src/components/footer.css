@@ -1,0 +1,12 @@
+footer {
+  text-align: right;
+  margin-top: 25px;
+  margin-right: 50px;
+}
+
+footer span {
+  font-size: 21px;
+  line-height: 28px;
+  text-align: right;
+  color: var(--GPlinkgrey);
+}

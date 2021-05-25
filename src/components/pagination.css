@@ -1,0 +1,19 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+}
+
+.pagination span {
+  list-style-type: none;
+  margin: 0 4px;
+  font-size: 20px;
+  line-height: 35px;
+  border-radius: 8px;
+  padding: 0 8px;
+}
+
+.currentPage {
+  background-color: var(--GPpink);
+}

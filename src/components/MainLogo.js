@@ -1,7 +1,7 @@
 import "./mainlogo.css";
 import "./logo.css";
 
-const Header = () => {
+const MainLogo = () => {
   return (
     <>
       <div className="mainlogo-container">
@@ -25,4 +25,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default MainLogo;

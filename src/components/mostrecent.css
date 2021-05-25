@@ -1,0 +1,41 @@
+.five-games-container {
+  height: 298px;
+  margin: 35px 0;
+  background-color: burlywood;
+}
+
+.title-section {
+  height: 40px;
+  font-size: 30px;
+  line-height: 40px;
+}
+.container7 {
+  height: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-main {
+  width: 200px;
+  height: 250px;
+  position: relative;
+}
+
+.card-main img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.card-main img:hover {
+  opacity: 0.5;
+}
+
+.gameName {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 80%;
+  line-height: 23px;
+  font-size: 17px;
+}

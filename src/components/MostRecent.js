@@ -24,7 +24,7 @@ const MostRecent = (props) => {
         // console.log(response.data);
         setData(response.data);
         setCount(response.data.count);
-        setLastPage((response.data.count / 5).toFixed(0));
+        setLastPage(Math.ceil(response.data.count / 5));
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);

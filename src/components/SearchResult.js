@@ -18,12 +18,13 @@ const SearchResult = (props) => {
       try {
         const response = await axios.get(
           // `http://localhost:4000/games?pagesize=20&page=${currentPage}&search=${search}`
-          `https://express-gamepad.herokuapp.com/games?pagesize=20&page=${currentPage}&search=${search}`
+          // `https://express-gamepad.herokuapp.com/games?pagesize=20&page=${currentPage}&search=${search}`
+          `http://localhost:4000/games?pagesize=20&page=${currentPage}&search=${search}`
         );
         // console.log(response.data);
         setData(response.data);
         setCount(response.data.count);
-        setLastPage((response.data.count / 20).toFixed(0));
+        setLastPage(Math.ceil(response.data.count / 20));
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -50,6 +51,14 @@ const SearchResult = (props) => {
         </div>
         <span className="txt2 exo fz500">{count} games</span>
       </div>
+      {/* Select plateform */}
+      <div>
+        <label for="plateform-select">Plateform</label>
+        <select name="plateform" id="plateform-select">
+          <option value="">All</option>
+        </select>
+      </div>
+      {/* ------------------- */}
       <div className="result-search-list">
         {data.results.map((game) => {
           return (

@@ -18,8 +18,7 @@ const SearchResult = (props) => {
       try {
         const response = await axios.get(
           // `http://localhost:4000/games?pagesize=20&page=${currentPage}&search=${search}`
-          // `https://express-gamepad.herokuapp.com/games?pagesize=20&page=${currentPage}&search=${search}`
-          `http://localhost:4000/games?pagesize=20&page=${currentPage}&search=${search}`
+          `https://express-gamepad.herokuapp.com?pagesize=20&page=${currentPage}&search=${search}`
         );
         // console.log(response.data);
         setData(response.data);

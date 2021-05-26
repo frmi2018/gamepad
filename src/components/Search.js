@@ -10,8 +10,8 @@ const Search = (props) => {
           <input
             type="text"
             placeholder="Search for a game..."
-            onChange={(event) => {
-              if (event.target.value) {
+            onKeyPress={(event) => {
+              if (event.key === "Enter" && event.target.value.length > 0) {
                 setSearch(event.target.value);
                 setDisplaySearchResult(true);
               } else {

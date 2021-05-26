@@ -12,13 +12,14 @@ const SearchResult = (props) => {
   // state
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [plateform, setPlateform] = useState("");
   // requête serveur pour récupérer les données
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
           // `http://localhost:4000/games?pagesize=20&page=${currentPage}&search=${search}`
-          `https://express-gamepad.herokuapp.com?pagesize=20&page=${currentPage}&search=${search}`
+          `https://express-gamepad.herokuapp.com/games?pagesize=20&page=${currentPage}&search=${search}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -53,10 +54,20 @@ const SearchResult = (props) => {
       {/* Select plateform */}
       <div>
         <label for="plateform-select">Plateform</label>
-        <select name="plateform" id="plateform-select">
+        <select
+          name="plateform"
+          id="plateform-select"
+          onChange={(event) => {
+            setPlateform(event.target.value);
+          }}
+        >
           <option value="">All</option>
+          <option value="">1</option>
+          <option value="">2</option>
         </select>
+        <span>{plateform}</span>
       </div>
+
       {/* ------------------- */}
       <div className="result-search-list">
         {data.results.map((game) => {

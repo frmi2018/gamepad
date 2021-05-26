@@ -1,19 +1,30 @@
 .pagination {
+  background-color: brown;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 45px;
+}
+
+.nav-page-container {
+  background-color: saddlebrown;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.before,
+.after {
+  background-color: burlywood;
+  display: flex;
 }
 
 .pagination span {
-  list-style-type: none;
-  margin: 0 4px;
   font-size: 20px;
   line-height: 35px;
   border-radius: 8px;
-  padding: 0 8px;
+  padding: 0 1vh;
 }
 
 .currentPage {
   background-color: var(--GPpink);
+  margin: 0 2vh;
 }

@@ -3,21 +3,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 50px;
+  margin: 0 5vh;
 }
 
 .headerleft {
-  width: 194px;
-  height: 45px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
 .headerleft .logo-container {
   width: 32px;
   height: 32px;
-  margin-left: 6px;
 }
 
 .headerleft .logo-container img {
@@ -27,8 +23,6 @@
 }
 
 .gamepad {
-  width: 150px;
-  height: 45px;
   font-size: 34px;
   line-height: 45px;
 }
@@ -40,8 +34,6 @@
 }
 
 .mycollection {
-  width: 125px;
-  height: 27px;
   font-size: 20px;
   line-height: 27px;
 }
@@ -57,9 +49,8 @@
 }
 
 .login {
-  height: 20px;
   font-size: 20px;
-  line-height: 20px;
+  line-height: 37px;
 }
 
 .line1 {

@@ -5,9 +5,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 // import pour afficher un loader le temps du chargement des données
 import Loader from "react-loader-spinner";
+import Card from "./Card.js";
 
 const TopMarks = (props) => {
-  const { setCount, currentPage } = props;
+  const { setCount, currentPage, setLastPage } = props;
   // state
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -17,12 +18,13 @@ const TopMarks = (props) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          // `http://localhost:4000/games?page=${currentPage}&ordering=rating`
-          `https://express-gamepad.herokuapp.com/games?page=${currentPage}&ordering=relevance`
+          // `http://localhost:4000/games?pagesize=5&page=${currentPage}&ordering=relevance`
+          `https://express-gamepad.herokuapp.com/games?pagesize=5&page=${currentPage}&ordering=relevance`
         );
         // console.log(response.data);
         setData(response.data);
         setCount(response.data.count);
+        setLastPage((response.data.count / 5).toFixed(0));
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -47,10 +49,12 @@ const TopMarks = (props) => {
           <div className="container7">
             {data.results.map((game) => {
               return (
-                <div key={game.id} className="card-main">
-                  <img src={game.background_image} alt={game.name} />
-                  <span className="gameName exo fz400">{game.name}</span>
-                </div>
+                <Card
+                  key={game.id}
+                  className="card-main"
+                  image={game.background_image}
+                  title={game.name}
+                />
               );
             })}
           </div>

@@ -1,0 +1,27 @@
+.card-container {
+  width: 200px;
+  height: 250px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.card-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.card-container img:hover {
+  opacity: 0.5;
+}
+
+.card-container span {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
+  line-height: 23px;
+  font-size: 17px;
+  background-color: rgba(100, 100, 100, 0.2);
+  padding: 0.5vh;
+}

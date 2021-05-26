@@ -10,24 +10,51 @@ import MostRecent from "../components/MostRecent.js";
 import TopMarks from "../components/TopMarks.js";
 import Pagination from "../components/Pagination.js";
 import Footer from "../components/Footer.js";
+import SearchResult from "../components/SearchResult.js";
 
 const HomePage = () => {
   // stat
   const [count, setCount] = useState(0);
-  const pageSize = 5;
   const [currentPage, setCurrentPage] = useState(1);
+  const [displaySearchResult, setDisplaySearchResult] = useState(false);
+  const [search, setSearch] = useState("");
+  const [lastPage, setLastPage] = useState("");
+
   return (
     <div>
       <Header />
       <MainLogo />
-      <Search count={count} />
-      <MostRecent currentPage={currentPage} setCount={setCount} />
-      <TopMarks currentPage={currentPage} setCount={setCount} />
-      <Pagination
+      <Search
         count={count}
-        pageSize={pageSize}
+        setDisplaySearchResult={setDisplaySearchResult}
+        setSearch={setSearch}
+      />
+      {displaySearchResult === false ? (
+        <div>
+          <MostRecent
+            currentPage={currentPage}
+            setCount={setCount}
+            setLastPage={setLastPage}
+          />
+          <TopMarks
+            currentPage={currentPage}
+            setCount={setCount}
+            setLastPage={setLastPage}
+          />
+        </div>
+      ) : (
+        <SearchResult
+          setCount={setCount}
+          count={count}
+          search={search}
+          currentPage={currentPage}
+          setLastPage={setLastPage}
+        />
+      )}
+      <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        lastPage={lastPage}
       />
       <Footer />
     </div>

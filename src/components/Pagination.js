@@ -1,26 +1,53 @@
 import "./pagination.css";
 
 const Pagination = (props) => {
-  const { count, pageSize, currentPage, setCurrentPage } = props;
-  const lastPage = Number((count / pageSize).toFixed(0));
+  const { currentPage, setCurrentPage, lastPage } = props;
 
   return (
     <div className="pagination">
-      {currentPage !== 1 && (
-        <>
-          <span onClick={() => setCurrentPage(currentPage - 1)}>&#9664;</span>
-          <span onClick={() => setCurrentPage(1)}>1</span>
-          <span>...</span>
-        </>
-      )}
-      <span className="currentPage">{currentPage}</span>
-      {currentPage < lastPage && (
-        <>
-          <span>...</span>
-          <span onClick={() => setCurrentPage(lastPage)}>{lastPage}</span>
-          <span onClick={() => setCurrentPage(currentPage + 1)}>&#9654;</span>
-        </>
-      )}
+      <div className="nav-page-container">
+        <div className="before">
+          {currentPage !== 1 && (
+            <div>
+              <span onClick={() => setCurrentPage(currentPage - 1)}>
+                &#9664;
+              </span>
+              <span onClick={() => setCurrentPage(1)}>1</span>
+            </div>
+          )}
+
+          {currentPage - 100 > 1 && (
+            <div>
+              <span>...</span>
+              <span onClick={() => setCurrentPage(currentPage - 100)}>
+                {currentPage - 100}
+              </span>
+            </div>
+          )}
+        </div>
+
+        <span className="currentPage">{currentPage}</span>
+
+        <div className="after">
+          {currentPage + 100 < lastPage && (
+            <div>
+              <span onClick={() => setCurrentPage(currentPage + 100)}>
+                {currentPage + 100}
+              </span>
+              <span>...</span>
+            </div>
+          )}
+
+          {currentPage !== lastPage && (
+            <div>
+              <span onClick={() => setCurrentPage(lastPage)}>{lastPage}</span>
+              <span onClick={() => setCurrentPage(currentPage + 1)}>
+                &#9654;
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

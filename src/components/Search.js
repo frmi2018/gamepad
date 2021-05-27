@@ -11,12 +11,13 @@ const Search = (props) => {
             type="text"
             placeholder="Search for a game..."
             onKeyPress={(event) => {
-              if (event.key === "Enter" && event.target.value.length > 0) {
-                setSearch(event.target.value);
-                setDisplaySearchResult(true);
-              } else {
-                setDisplaySearchResult(false);
-              }
+              if (event.key === "Enter")
+                if (event.target.value.length > 0) {
+                  setSearch(event.target.value);
+                  setDisplaySearchResult(true);
+                } else {
+                  setDisplaySearchResult(false);
+                }
             }}
           ></input>
           <div className="icon-container">

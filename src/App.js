@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomePage from "./containers/HomePage.js";
+import GamePage from "./containers/GamePage";
 
 const App = () => {
   return (
@@ -10,6 +11,9 @@ const App = () => {
       <div className="container">
         <Router>
           <Switch>
+            <Route path="/games/:id">
+              <GamePage />
+            </Route>
             {/* HomePage */}
             <Route path="/">
               <HomePage />

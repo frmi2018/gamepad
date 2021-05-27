@@ -3,6 +3,7 @@ import "./mostrecent.css";
 import { useState, useEffect } from "react";
 // import pour faire des requêtes
 import axios from "axios";
+import { Link } from "react-router-dom";
 // import pour afficher un loader le temps du chargement des données
 import Loader from "react-loader-spinner";
 import Card from "./Card.js";
@@ -49,12 +50,13 @@ const MostRecent = (props) => {
           <div className="container7">
             {data.results.map((game) => {
               return (
-                <Card
-                  key={game.id}
-                  className="card-main"
-                  image={game.background_image}
-                  title={game.name}
-                />
+                <Link key={game.id} to={`/games/${game.id}`}>
+                  <Card
+                    className="card-main"
+                    image={game.background_image}
+                    title={game.name}
+                  />
+                </Link>
               );
             })}
           </div>

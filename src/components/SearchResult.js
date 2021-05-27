@@ -3,6 +3,7 @@ import "./searchresult.css";
 import { useState, useEffect } from "react";
 // import pour faire des requêtes
 import axios from "axios";
+import { Link } from "react-router-dom";
 // import pour afficher un loader le temps du chargement des données
 import Loader from "react-loader-spinner";
 import Card from "./Card.js";
@@ -13,6 +14,8 @@ const SearchResult = (props) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [plateform, setPlateform] = useState("");
+  const [type, setType] = useState("");
+  const [sort, setSort] = useState("");
   // requête serveur pour récupérer les données
   useEffect(() => {
     const fetchData = async () => {
@@ -50,34 +53,75 @@ const SearchResult = (props) => {
           <span className="txt exo fz500"> "</span>
         </div>
         <span className="txt2 exo fz500">{count} games</span>
+        <div>
+          <span>Plateform : {plateform}</span>
+          <span>Type : {type}</span>
+          <span>Sort by : {sort}</span>
+        </div>
       </div>
-      {/* Select plateform */}
-      <div>
-        <label for="plateform-select">Plateform</label>
-        <select
-          name="plateform"
-          id="plateform-select"
-          onChange={(event) => {
-            setPlateform(event.target.value);
-          }}
-        >
-          <option value="">All</option>
-          <option value="">1</option>
-          <option value="">2</option>
-        </select>
-        <span>{plateform}</span>
+      {/* ------------------- */}
+      <div className="filters-container">
+        {/* Select plateform */}
+        <div>
+          <label htmlFor="plateform-select">Plateform</label>
+          <select
+            name="plateform"
+            id="plateform-select"
+            onChange={(event) => {
+              setPlateform(event.target.value);
+            }}
+          >
+            <option value="all">All</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+        {/* Select type */}
+        <div>
+          <label htmlFor="type-select">Type</label>
+          <select
+            name="type"
+            id="type-select"
+            onChange={(event) => {
+              setType(event.target.value);
+            }}
+          >
+            <option value="all">All</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+        {/* Select sort */}
+        <div>
+          <label htmlFor="sort-select">Sort by</label>
+          <select
+            name="sort"
+            id="sort-select"
+            onChange={(event) => {
+              setType(event.target.value);
+            }}
+          >
+            <option value="default">Default</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+        <div>
+          <span>Go Filters !</span>
+        </div>
       </div>
-
       {/* ------------------- */}
       <div className="result-search-list">
         {data.results.map((game) => {
           return (
-            <Card
-              key={game.id}
-              className="card-main"
-              image={game.background_image}
-              title={game.name}
-            />
+            <Link key={game.id} to={`/games/${game.id}`}>
+              <Card
+                key={game.id}
+                className="card-main"
+                image={game.background_image}
+                title={game.name}
+              />
+            </Link>
           );
         })}
       </div>

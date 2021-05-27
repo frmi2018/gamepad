@@ -18,7 +18,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="line1"></div>
+      <div className="line1" />
     </>
   );
 };

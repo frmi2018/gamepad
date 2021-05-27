@@ -1,5 +1,8 @@
 import "./header.css";
+// -----
 import logo from "../assets/logo.svg";
+// -----
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -12,7 +15,9 @@ const Header = () => {
           <span className="gamepad exo fw400">Gamepad</span>
         </div>
         <div className="headerright">
-          <span className="mycollection exo fw500">My Collection</span>
+          <Link to={`/MyCollection`}>
+            <span className="mycollection exo fw500">My Collection</span>
+          </Link>
           <div className="button-login">
             <span className="login exo fw500">Login</span>
           </div>

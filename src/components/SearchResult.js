@@ -98,7 +98,7 @@ const SearchResult = (props) => {
             name="sort"
             id="sort-select"
             onChange={(event) => {
-              setType(event.target.value);
+              setSort(event.target.value);
             }}
           >
             <option value="default">Default</option>

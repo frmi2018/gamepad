@@ -1,17 +1,29 @@
 import "./gamepage.css";
-
+// import packages
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
-import Header from "../components/Header.js";
 import { BiCommentDetail } from "react-icons/bi";
 import { MdTurnedInNot } from "react-icons/md";
+// import components
+import Header from "../components/Header.js";
+import Footer from "../components/Footer.js";
 
-const GamePage = () => {
+const GamePage = ({ addFav, fav }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  // FAVORIS CHECK for flag
+  const checkFav = (id) => {
+    if (fav.indexOf(id) === -1) {
+      setIsFavorite(false);
+    } else {
+      setIsFavorite(true);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +40,7 @@ const GamePage = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <Loader
@@ -50,10 +62,17 @@ const GamePage = () => {
           <div className="gamepage-div5">
             <div className="gamepage-btn">
               <div className="gamepage-btn-div1">
-                <span>Save to Collection</span>
+                {isFavorite ? (
+                  <span>Remove to collection</span>
+                ) : (
+                  <span>Save to Collection</span>
+                )}
               </div>
-              <div className="gamepage-btn-div2">
-                <MdTurnedInNot />
+              <div
+                className="gamepage-btn-div2"
+                onClick={() => addFav(data.id)}
+              >
+                {isFavorite ? <MdTurnedInNot /> : <MdTurnedInNot />}
               </div>
             </div>
             <div className="gamepage-btn exo fz400">
@@ -101,6 +120,7 @@ const GamePage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -17,7 +17,8 @@ const GamePage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/games?id=${id}`
+          // `http://localhost:4000/games?id=${id}`
+          `https://express-gamepad.herokuapp.com/games?id=${id}`
         );
         console.log(response.data);
         setData(response.data);

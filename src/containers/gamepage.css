@@ -22,7 +22,6 @@
 }
 
 .gamepage-div0 {
-  background-color: cornflowerblue;
   flex: 1;
   height: 354px;
   padding: 0 5vh 0 0;
@@ -46,18 +45,14 @@
 }
 
 .gamepage-div4 {
-  background-color: salmon;
   flex: 1;
-  padding: 0 5vh 0 23px;
+  padding: 0 0 0 23px;
 }
 .gamepage-div5 {
-  background-color: cadetblue;
   display: flex;
 }
 .gamepage-div6 {
-  background-color: burlywood;
   display: flex;
-  padding: 0 5vh 0 0;
 }
 .gamepage-div7 {
   flex: 1;
@@ -65,11 +60,14 @@
   flex-direction: column;
 }
 .gamepage-div8 {
-  background-color: chocolate;
   flex: 1;
-  height: 74px;
+  height: min-content;
   overflow: hidden;
+  display: inline-block;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .gamepage-btn {
@@ -84,11 +82,9 @@
   cursor: pointer;
 }
 .gamepage-btn-div1 {
-  background-color: blueviolet;
   flex: 3;
 }
 .gamepage-btn-div2 {
-  background-color: blue;
   flex: 1;
   display: flex;
   justify-content: center;

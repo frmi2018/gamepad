@@ -22,8 +22,8 @@ const MyCollection = ({ fav, removeFav }) => {
         <div className="mycollection-div1">
           {fav.map((game, index) => {
             return (
-              <div className="mycollection-div2">
-                <Link key={index} to={`/games/${game[0]}`}>
+              <div key={index} className="mycollection-div2">
+                <Link to={`/games/${game[0]}`}>
                   <Card
                     key={game[0]}
                     className="card-main"

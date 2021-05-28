@@ -46,19 +46,15 @@ const SearchResult = (props) => {
     />
   ) : (
     <div className="games-list-container">
-      <div className="rect1">
-        <div>
+      <div className="searchresult-div1">
+        <div className="searchresult-div2">
           <span className="txt exo fz500">Search result for "</span>
           <span className="txt italic exo fz400">{search}</span>
           <span className="txt exo fz500"> "</span>
         </div>
         <span className="txt2 exo fz500">{count} games</span>
-        <div>
-          <span>Plateform : {plateform}</span>
-          <span>Type : {type}</span>
-          <span>Sort by : {sort}</span>
-        </div>
       </div>
+
       {/* ------------------- */}
       <div className="filters-container">
         {/* Select plateform */}

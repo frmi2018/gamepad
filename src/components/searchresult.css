@@ -16,11 +16,24 @@
 .txt2 {
   line-height: 25px;
   font-size: 19px;
-  margin-bottom: 33px;
+  text-align: center;
 }
 
-.rect1 {
+.searchresult-div1 {
   display: flex;
+  background-color: tomato;
   flex-direction: column;
-  text-align: center;
+}
+
+.searchresult-div2 {
+  display: flex;
+  background-color: greenyellow;
+  margin: 0 auto;
+}
+
+.filters-container {
+  display: flex;
+  background-color: thistle;
+  justify-content: space-evenly;
+  margin-bottom: 35px;
 }

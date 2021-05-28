@@ -9,14 +9,14 @@ const Header = ({ fav }) => {
     <>
       <div className="header">
         <Link to={`/`}>
-          <div className="headerleft">
-            <div className="logo-container">
+          <div className="header-div1">
+            <div className="header-logo-container">
               <img src={logo} alt="logo gamepad" />
             </div>
             <span className="gamepad exo fw400">Gamepad</span>
           </div>
         </Link>
-        <div className="headerright">
+        <div className="header-div2">
           <Link to={`/MyCollection`} fav={fav}>
             <span className="mycollection exo fw500">My Collection</span>
           </Link>
@@ -27,7 +27,7 @@ const Header = ({ fav }) => {
           </Link>
         </div>
       </div>
-      <div className="line1" />
+      <div className="line-top-pink" />
     </>
   );
 };

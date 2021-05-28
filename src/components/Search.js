@@ -4,29 +4,27 @@ import { BiSearchAlt2 } from "react-icons/bi";
 const Search = (props) => {
   const { count, setDisplaySearchResult, setSearch } = props;
   return (
-    <>
-      <div className="search-bar exo fz400">
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Search for a game..."
-            onKeyPress={(event) => {
-              if (event.key === "Enter")
-                if (event.target.value.length > 0) {
-                  setSearch(event.target.value);
-                  setDisplaySearchResult(true);
-                } else {
-                  setDisplaySearchResult(false);
-                }
-            }}
-          ></input>
-          <div className="icon-container">
-            <BiSearchAlt2 />
-          </div>
+    <div className="search-div0 exo fz400">
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search for a game..."
+          onKeyPress={(event) => {
+            if (event.key === "Enter")
+              if (event.target.value.length > 0) {
+                setSearch(event.target.value);
+                setDisplaySearchResult(true);
+              } else {
+                setDisplaySearchResult(false);
+              }
+          }}
+        ></input>
+        <div className="search-icon">
+          <BiSearchAlt2 />
         </div>
-        <span className="txt3">Search {count} games</span>
       </div>
-    </>
+      <span className="search-txt1">Search {count} games</span>
+    </div>
   );
 };
 

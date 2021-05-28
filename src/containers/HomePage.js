@@ -30,7 +30,7 @@ const HomePage = ({ fav }) => {
         setSearch={setSearch}
       />
       {displaySearchResult === false ? (
-        <div>
+        <div className="games-list-container">
           <MostRecent
             currentPage={currentPage}
             setCount={setCount}

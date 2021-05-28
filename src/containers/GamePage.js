@@ -43,7 +43,7 @@ const GamePage = (props) => {
       width={80}
     />
   ) : (
-    <div>
+    <>
       <Header />
       <span className="exo fz400 gamepage-txt1">{data.name}</span>
       <div className="gamepage-div2">
@@ -86,37 +86,44 @@ const GamePage = (props) => {
               <div className="gamepage-div7">
                 <span className="gamepage-txt4">Plateforms</span>
                 {/* gérer un tableau */}
-                <span>Nitendo 3DS</span>
+                {data.platforms.map((value, index) => {
+                  return <span key={index}>{value.platform.name}</span>;
+                })}
                 <span className="gamepage-txt4">Released date</span>
                 {/* revoir format date*/}
                 <span>{data.released}</span>
                 <span className="gamepage-txt4">Publisher</span>
                 {/* gérer un tableau */}
-                {/* <span>{data.publishers[0]}</span> */}
+                {data.publishers.map((value, index) => {
+                  return <span key={index}>{value.name}</span>;
+                })}
               </div>
               <div className="gamepage-div7">
                 <span className="gamepage-txt4">Genre</span>
                 {/* gérer un tableau */}
-                {/* <span>{data.genres[0]}</span> */}
+                {data.genres.map((value, index) => {
+                  return <span key={index}>{value.name}</span>;
+                })}
                 <span className="gamepage-txt4">developer</span>
                 {/* gérer un tableau */}
-                {/* <span>{data.developers[0]}</span> */}
+                {data.developers.map((value, index) => {
+                  return <span key={index}>{value.name}</span>;
+                })}
                 <span className="gamepage-txt4">Age rating</span>
-                {/* gérer un tableau */}
-                {/* <span>{data.publishers[0].rating}</span> */}
+                <span>{data.esrb_rating.id}</span>
               </div>
             </div>
 
             <span className="gamepage-txt4">About</span>
             <div
               className="gamepage-div8 gamepage-txt3"
-              dangerouslySetInnerHTML={{ __html: [data.description] }}
+              dangerouslySetInnerHTML={{ __html: [data.description_raw] }}
             />
           </div>
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 export default GamePage;

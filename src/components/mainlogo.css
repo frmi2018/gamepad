@@ -1,22 +1,22 @@
-.mainlogo-container {
+.mainlogo-div0 {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
 }
 
-.mainlogo-container .logo-container {
+.mainlogo-div0 .logo-container {
   width: 75px;
   height: 75px;
 }
 
-.mainlogo-container .logo-container img {
+.mainlogo-div0 .logo-container img {
   width: 75px;
   height: 75px;
   transform: scale(1.45);
 }
 
-.mainlogo-container .gamepad {
+.mainlogo-div0 .gamepad {
   font-size: 100px;
   line-height: 133px;
   text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);

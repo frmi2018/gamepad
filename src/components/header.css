@@ -6,17 +6,17 @@
   margin: 0 5vh;
 }
 
-.headerleft {
+.header-div1 {
   display: flex;
   align-items: center;
 }
 
-.headerleft .logo-container {
+.header-div1 .header-logo-container {
   width: 32px;
   height: 32px;
 }
 
-.headerleft .logo-container img {
+.header-div1 .header-logo-container img {
   width: 32px;
   height: 32px;
   transform: scale(1.5);
@@ -27,7 +27,7 @@
   line-height: 45px;
 }
 
-.headerright {
+.header-div2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,7 +53,7 @@
   line-height: 37px;
 }
 
-.line1 {
+.line-top-pink {
   border-bottom: 2px solid var(--GPpink);
   margin-bottom: 45px;
 }

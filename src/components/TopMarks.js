@@ -1,4 +1,4 @@
-import "./mostrecent.css";
+import "./fivegames.css";
 // Hook
 import { useState, useEffect } from "react";
 // import pour faire des requêtes
@@ -43,25 +43,21 @@ const TopMarks = (props) => {
       width={80}
     />
   ) : (
-    <div>
-      <div className="games-list-container">
-        <div className="five-games-container">
-          <span className="title-section exo fz500">Meilleurs Notes</span>
-          <div className="container7">
-            {data.results.map((game) => {
-              return (
-                <Link key={game.id} to={`/games/${game.id}`}>
-                  <Card
-                    key={game.id}
-                    className="card-main"
-                    image={game.background_image}
-                    title={game.name}
-                  />
-                </Link>
-              );
-            })}
-          </div>
-        </div>
+    <div className="five-games-div0">
+      <span className="five-games-txt exo fz500">Meilleurs Notes</span>
+      <div className="five-games-div1">
+        {data.results.map((game) => {
+          return (
+            <Link key={game.id} to={`/games/${game.id}`}>
+              <Card
+                key={game.id}
+                className="card-main"
+                image={game.background_image}
+                title={game.name}
+              />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

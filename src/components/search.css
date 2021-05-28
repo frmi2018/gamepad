@@ -1,4 +1,4 @@
-.search-bar {
+.search-div0 {
   width: 498px;
   margin: 0 auto;
   text-align: center;
@@ -22,16 +22,16 @@
   outline: none;
   flex: 1;
 }
-.icon-container {
+.search-icon {
   width: 35px;
   height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--GPblackicon);
+  font-size: 2em;
 }
-
-.txt3 {
+.search-txt1 {
   font-size: 19px;
   line-height: 25px;
 }

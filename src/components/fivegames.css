@@ -1,15 +1,14 @@
-.five-games-container {
+.five-games-div0 {
   height: 298px;
-  margin: 35px 0;
 }
 
-.title-section {
+.five-games-txt {
   height: 40px;
   font-size: 30px;
   line-height: 40px;
 }
 
-.container7 {
+.five-games-div1 {
   height: 250px;
   display: flex;
   justify-content: space-between;

@@ -4,30 +4,22 @@ import logo from "../assets/logo.svg";
 // -----
 import { Link } from "react-router-dom";
 
-const Header = ({ fav, myCollection, setMyCollection }) => {
+const Header = ({ fav }) => {
   return (
     <>
       <div className="header">
-        <div className="headerleft">
-          <div className="logo-container">
-            <img src={logo} alt="logo gamepad" />
+        <Link to={`/`}>
+          <div className="headerleft">
+            <div className="logo-container">
+              <img src={logo} alt="logo gamepad" />
+            </div>
+            <span className="gamepad exo fw400">Gamepad</span>
           </div>
-          <span className="gamepad exo fw400">Gamepad</span>
-        </div>
+        </Link>
         <div className="headerright">
-          {myCollection ? (
-            <Link
-              to={`/MyCollection`}
-              fav={fav}
-              setMyCollection={setMyCollection}
-            >
-              <span className="mycollection exo fw500">My Collection</span>
-            </Link>
-          ) : (
-            <Link to={`/`}>
-              <span className="mycollection exo fw500">Back</span>
-            </Link>
-          )}
+          <Link to={`/MyCollection`} fav={fav}>
+            <span className="mycollection exo fw500">My Collection</span>
+          </Link>
           <div className="button-login">
             <span className="login exo fw500">Login</span>
           </div>

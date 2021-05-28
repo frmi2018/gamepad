@@ -12,7 +12,7 @@ import Pagination from "../components/Pagination.js";
 import Footer from "../components/Footer.js";
 import SearchResult from "../components/SearchResult.js";
 
-const HomePage = () => {
+const HomePage = ({ fav }) => {
   // stat
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,7 +22,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <Header />
+      <Header fav={fav} />
       <MainLogo />
       <Search
         count={count}

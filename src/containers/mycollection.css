@@ -1,0 +1,31 @@
+.mycollection-txt1 {
+  font-size: 62px;
+  line-height: 82px;
+  position: relative;
+}
+
+.mycollection-title {
+  margin-bottom: 58px;
+}
+
+.mycollection-line {
+  background-color: var(--GPpink);
+  width: 282px;
+  height: 8px;
+  position: absolute;
+  left: 0px;
+  bottom: 10px;
+}
+
+.mycollection-div0 {
+  margin: 0 5vh;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.mycollection-div1 {
+  height: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

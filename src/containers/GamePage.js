@@ -12,7 +12,7 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
 const GamePage = (props) => {
-  const { fav, isFavorite, addFav, myCollection, setMyCollection } = props;
+  const { isFavorite, addFav, checkFav } = props;
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -24,7 +24,7 @@ const GamePage = (props) => {
           // `http://localhost:4000/games?id=${id}`
           `https://express-gamepad.herokuapp.com/games?id=${id}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -44,11 +44,7 @@ const GamePage = (props) => {
     />
   ) : (
     <div>
-      <Header
-        fav={fav}
-        myCollection={myCollection}
-        setMyCollection={setMyCollection}
-      />
+      <Header />
       <span className="exo fz400 gamepage-txt1">{data.name}</span>
       <div className="gamepage-div2">
         <div className="gamepage-div3">
@@ -68,6 +64,7 @@ const GamePage = (props) => {
                 )}
               </div>
               <div className="gamepage-btn-div2">
+                {checkFav(data.id)}
                 {isFavorite ? <MdTurnedIn /> : <MdTurnedInNot />}
               </div>
             </div>

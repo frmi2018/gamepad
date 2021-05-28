@@ -1,40 +1,35 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Loader from "react-loader-spinner";
+import "./mycollection.css";
+
+import { Link } from "react-router-dom";
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
+import Card from "../components/Card.js";
 
 const MyCollection = ({ fav }) => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await axios.post(
-  //       // "http://localhost:4000/mycollection",
-  //       // boucle sur le tableau fav / requete id / sauvegarde image url dans new tab / reponse new tab
-  //       {
-  //         fav,
-  //       }
-  //     );
-  //     setData(response.data);
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, [fav]);
-
-  return isLoading ? (
-    <Loader />
-  ) : (
-    <div style={{ color: "white" }}>
+  console.log(fav);
+  return (
+    <>
       <Header />
-      <span>My Collection</span>
-      <br />
-      <span>afficher image des jeux</span>
-      <br />
-      <span>feat : supprimer jeu des favoris</span>
-      <Footer />
-    </div>
+      <div className="mycollection-div0">
+        <div className="mycollection-title">
+          <span className="mycollection-txt1 exo fz400">
+            My Collection
+            <div className="mycollection-line" />
+          </span>
+        </div>
+
+        <div className="mycollection-div1">
+          {fav.map((game, index) => {
+            return (
+              <Link key={index} to={`/games/${game[0]}`}>
+                <Card key={game[0]} className="card-main" image={game[1]} />
+              </Link>
+            );
+          })}
+        </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 export default MyCollection;

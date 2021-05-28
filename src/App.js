@@ -9,18 +9,30 @@ import GamePage from "./containers/GamePage.js";
 import MyCollection from "./containers/MyCollection.js";
 
 const App = () => {
+  const [myCollection, setMyCollection] = useState(true);
+  const [isFavorite, setIsFavorite] = useState(false);
   let cookie = Cookies.get("fav");
   const [fav, setFav] = useState((cookie && JSON.parse(cookie)) || []);
 
   // FAVORIS ADD/REMOVE
-  const addFav = (id) => {
+  const addFav = (tab) => {
     let favCopy = [...fav];
-    if (favCopy.indexOf(id) === -1) {
-      favCopy.push(id);
+    console.log(tab[0]);
+    console.log(tab[1]);
+    console.log(favCopy.length);
+    let check = false;
+    for (let i; i < favCopy.length; i++) {
+      if (favCopy[i][0] === tab[0]) {
+        favCopy.splice(favCopy[i], 1);
+        alert("Favoris enlevé !");
+        setIsFavorite(false);
+        check = true;
+      }
+    }
+    if (check === false) {
+      favCopy.push(tab);
       alert("Favoris ajouté !");
-    } else {
-      favCopy.splice(favCopy.indexOf(id), 1);
-      alert("Favoris enlevé !");
+      setIsFavorite(true);
     }
     setFav(favCopy);
     console.log(favCopy);
@@ -33,7 +45,13 @@ const App = () => {
         <Router>
           <Switch>
             <Route path="/games/:id">
-              <GamePage addFav={addFav} fav={fav} />
+              <GamePage
+                fav={fav}
+                isFavorite={isFavorite}
+                addFav={addFav}
+                myCollection={myCollection}
+                setMyCollection={setMyCollection}
+              />
             </Route>
             <Route path="/mycollection">
               <MyCollection />

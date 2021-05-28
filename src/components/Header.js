@@ -4,7 +4,7 @@ import logo from "../assets/logo.svg";
 // -----
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ fav, myCollection, setMyCollection }) => {
   return (
     <>
       <div className="header">
@@ -15,9 +15,19 @@ const Header = () => {
           <span className="gamepad exo fw400">Gamepad</span>
         </div>
         <div className="headerright">
-          <Link to={`/MyCollection`}>
-            <span className="mycollection exo fw500">My Collection</span>
-          </Link>
+          {myCollection ? (
+            <Link
+              to={`/MyCollection`}
+              fav={fav}
+              setMyCollection={setMyCollection}
+            >
+              <span className="mycollection exo fw500">My Collection</span>
+            </Link>
+          ) : (
+            <Link to={`/`}>
+              <span className="mycollection exo fw500">Back</span>
+            </Link>
+          )}
           <div className="button-login">
             <span className="login exo fw500">Login</span>
           </div>

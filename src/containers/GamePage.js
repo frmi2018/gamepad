@@ -5,25 +5,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import { BiCommentDetail } from "react-icons/bi";
-import { MdTurnedInNot } from "react-icons/md";
+import { MdTurnedInNot, MdTurnedIn } from "react-icons/md";
+
 // import components
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
-const GamePage = ({ addFav, fav }) => {
+const GamePage = (props) => {
+  const { fav, isFavorite, addFav, myCollection, setMyCollection } = props;
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  // FAVORIS CHECK for flag
-  const checkFav = (id) => {
-    if (fav.indexOf(id) === -1) {
-      setIsFavorite(false);
-    } else {
-      setIsFavorite(true);
-    }
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +44,11 @@ const GamePage = ({ addFav, fav }) => {
     />
   ) : (
     <div>
-      <Header />
+      <Header
+        fav={fav}
+        myCollection={myCollection}
+        setMyCollection={setMyCollection}
+      />
       <span className="exo fz400 gamepage-txt1">{data.name}</span>
       <div className="gamepage-div2">
         <div className="gamepage-div3">
@@ -60,7 +56,10 @@ const GamePage = ({ addFav, fav }) => {
         </div>
         <div className="gamepage-div0 exo fz400">
           <div className="gamepage-div5">
-            <div className="gamepage-btn">
+            <div
+              className="gamepage-btn"
+              onClick={() => addFav([data.id, data.background_image])}
+            >
               <div className="gamepage-btn-div1">
                 {isFavorite ? (
                   <span>Remove to collection</span>
@@ -68,11 +67,8 @@ const GamePage = ({ addFav, fav }) => {
                   <span>Save to Collection</span>
                 )}
               </div>
-              <div
-                className="gamepage-btn-div2"
-                onClick={() => addFav(data.id)}
-              >
-                {isFavorite ? <MdTurnedInNot /> : <MdTurnedInNot />}
+              <div className="gamepage-btn-div2">
+                {isFavorite ? <MdTurnedIn /> : <MdTurnedInNot />}
               </div>
             </div>
             <div className="gamepage-btn exo fz400">

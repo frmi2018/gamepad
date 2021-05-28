@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import Card from "../components/Card.js";
+import { MdTurnedIn } from "react-icons/md";
 
-const MyCollection = ({ fav }) => {
+const MyCollection = ({ fav, removeFav }) => {
   console.log(fav);
   return (
     <>
@@ -21,9 +22,22 @@ const MyCollection = ({ fav }) => {
         <div className="mycollection-div1">
           {fav.map((game, index) => {
             return (
-              <Link key={index} to={`/games/${game[0]}`}>
-                <Card key={game[0]} className="card-main" image={game[1]} />
-              </Link>
+              <div className="mycollection-div2">
+                <Link key={index} to={`/games/${game[0]}`}>
+                  <Card
+                    key={game[0]}
+                    className="card-main"
+                    image={game[1]}
+                    title={game[2]}
+                  />
+                </Link>
+
+                <MdTurnedIn
+                  className="turnedin-pink"
+                  title="Supprimer de votre collection"
+                  onClick={() => removeFav(game[0])}
+                />
+              </div>
             );
           })}
         </div>

@@ -20,9 +20,11 @@ const Header = ({ fav }) => {
           <Link to={`/MyCollection`} fav={fav}>
             <span className="mycollection exo fw500">My Collection</span>
           </Link>
-          <div className="button-login">
-            <span className="login exo fw500">Login</span>
-          </div>
+          <Link to={`/Login`}>
+            <div className="button-login">
+              <span className="login exo fw500">Login</span>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="line1" />

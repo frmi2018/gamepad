@@ -7,6 +7,8 @@ import Cookies from "js-cookie";
 import HomePage from "./containers/HomePage.js";
 import GamePage from "./containers/GamePage.js";
 import MyCollection from "./containers/MyCollection.js";
+import Login from "./containers/Login.js";
+import SignUp from "./containers/SignUp.js";
 
 const App = () => {
   const [myCollection, setMyCollection] = useState(true);
@@ -28,6 +30,19 @@ const App = () => {
     if (check === false) {
       favCopy.push(tab);
       setIsFavorite(true);
+    }
+    setFav(favCopy);
+    Cookies.set("fav", favCopy);
+  };
+
+  // FAVORIS REMOVE
+  const removeFav = (id) => {
+    let favCopy = [...fav];
+    for (let i = 0; i < favCopy.length; i++) {
+      if (favCopy[i][0] === id) {
+        favCopy.splice(favCopy[i], 1);
+        setIsFavorite(false);
+      }
     }
     setFav(favCopy);
     Cookies.set("fav", favCopy);
@@ -65,7 +80,13 @@ const App = () => {
               />
             </Route>
             <Route path="/mycollection">
-              <MyCollection fav={fav} />
+              <MyCollection fav={fav} removeFav={removeFav} />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/signup">
+              <SignUp />
             </Route>
             <Route path="/">
               <HomePage fav={fav} />

@@ -29,3 +29,19 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.mycollection-div2 {
+  position: relative;
+}
+
+.turnedin-pink {
+  color: var(--GPpink);
+  font-size: 2em;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.turnedin-pink:hover {
+  color: red;
+}

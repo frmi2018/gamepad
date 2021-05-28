@@ -24,7 +24,7 @@ const GamePage = (props) => {
           // `http://localhost:4000/games?id=${id}`
           `https://express-gamepad.herokuapp.com/games?id=${id}`
         );
-        // console.log(response.data);
+        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -54,11 +54,13 @@ const GamePage = (props) => {
           <div className="gamepage-div5">
             <div
               className="gamepage-btn"
-              onClick={() => addFav([data.id, data.background_image])}
+              onClick={() =>
+                addFav([data.id, data.background_image, data.name])
+              }
             >
               <div className="gamepage-btn-div1">
                 {isFavorite ? (
-                  <span>Remove to collection</span>
+                  <span>Remove collection</span>
                 ) : (
                   <span>Save to Collection</span>
                 )}

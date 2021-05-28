@@ -1,0 +1,75 @@
+.login-txt1 {
+  font-size: 32px;
+  line-height: 43px;
+  position: relative;
+}
+
+.login-txt2 {
+  font-size: 17px;
+  line-height: 23px;
+}
+
+.login-txt3 {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.login-title {
+  margin-bottom: 58px;
+}
+
+.login-line {
+  background-color: var(--GPpink);
+  width: 170px;
+  height: 8px;
+  position: absolute;
+  left: 0px;
+  bottom: 5px;
+}
+
+.login-div0 {
+  background-color: burlywood;
+  margin: 0 5vh;
+  min-height: 100vh;
+}
+
+.login-div1 {
+  background-color: cadetblue;
+  margin: 0 auto;
+  display: flex;
+  width: 800px;
+  height: 531px;
+}
+
+.login-div2 {
+  background-color: chocolate;
+  border-right: 1px solid var(--GPpink);
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-div3 {
+  background-color: cornflowerblue;
+  border-left: 1px solid var(--GPpink);
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-div4 {
+  background-color: darkgoldenrod;
+  display: flex;
+}
+
+.login-logos {
+  background-color: pink;
+  width: 30px;
+  height: 30px;
+}

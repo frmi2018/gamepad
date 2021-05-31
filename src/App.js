@@ -85,23 +85,21 @@ const App = () => {
             <Route path="/mycollection">
               <MyCollection fav={fav} removeFav={removeFav} />
             </Route>
-            <Route
-              path="/login"
-              setToken={setToken}
-              setUserId={setUserId}
-              error={error}
-              setError={setError}
-            >
-              <Login />
+            <Route path="/login">
+              <Login
+                setToken={setToken}
+                setUserId={setUserId}
+                error={error}
+                setError={setError}
+              />
             </Route>
-            <Route
-              path="/signup"
-              setToken={setToken}
-              setUserId={setUserId}
-              error={error}
-              setError={setError}
-            >
-              <SignUp />
+            <Route path="/signup">
+              <SignUp
+                setToken={setToken}
+                setUserId={setUserId}
+                error={error}
+                setError={setError}
+              />
             </Route>
             <Route path="/">
               <HomePage fav={fav} token={token} />

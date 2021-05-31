@@ -14,7 +14,8 @@
   height: 8px;
   position: absolute;
   left: 0px;
-  bottom: 10px;
+  bottom: 16px;
+  mix-blend-mode: lighten;
 }
 
 .mycollection-div0 {

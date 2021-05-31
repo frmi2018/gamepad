@@ -15,6 +15,9 @@ const App = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   let cookie = Cookies.get("fav");
   const [fav, setFav] = useState((cookie && JSON.parse(cookie)) || []);
+  const [token, setToken] = useState("");
+  const [userId, setUserId] = useState("");
+  const [error, setError] = useState(0);
 
   // FAVORIS ADD/REMOVE
   const addFav = (tab) => {
@@ -82,14 +85,26 @@ const App = () => {
             <Route path="/mycollection">
               <MyCollection fav={fav} removeFav={removeFav} />
             </Route>
-            <Route path="/login">
+            <Route
+              path="/login"
+              setToken={setToken}
+              setUserId={setUserId}
+              error={error}
+              setError={setError}
+            >
               <Login />
             </Route>
-            <Route path="/signup">
+            <Route
+              path="/signup"
+              setToken={setToken}
+              setUserId={setUserId}
+              error={error}
+              setError={setError}
+            >
               <SignUp />
             </Route>
             <Route path="/">
-              <HomePage fav={fav} />
+              <HomePage fav={fav} token={token} />
             </Route>
           </Switch>
         </Router>

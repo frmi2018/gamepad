@@ -1,0 +1,48 @@
+/* colonne gauche */
+.hdw-div2 {
+  background: linear-gradient(0deg, #171717 0%, rgba(0, 0, 0, 0) 100%);
+  border-right: 1px solid var(--GPpink);
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hdw-title {
+  margin-bottom: 58px;
+}
+.hdw-div7 {
+  padding: 33px;
+}
+.hdw-div4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 31px;
+}
+/* logos container */
+.hdw-logos {
+  background-color: pink;
+  width: 30px;
+  height: 30px;
+  margin: 8px;
+}
+.hdw-txt2 {
+  font-size: 17px;
+  line-height: 23px;
+  width: 285px;
+}
+.hdw-txt1 {
+  font-size: 32px;
+  line-height: 43px;
+  position: relative;
+}
+.hdw-line {
+  background-color: var(--GPpink);
+  width: 170px;
+  height: 8px;
+  position: absolute;
+  left: 0px;
+  bottom: 5px;
+  mix-blend-mode: overlay;
+}

@@ -1,9 +1,9 @@
-.login-div0 {
+.signup-div0 {
   margin: 0 5vh;
   min-height: 100vh;
 }
 
-.login-div1 {
+.signup-div1 {
   background-color: rgba(51, 52, 54, 1);
   margin: 0 auto;
   display: flex;
@@ -12,7 +12,7 @@
 }
 
 /* colonne droite */
-.login-div3 {
+.signup-div3 {
   border-left: 1px solid var(--GPpink);
   width: 400px;
   display: flex;
@@ -21,27 +21,30 @@
   justify-content: center;
 }
 /* formulaire */
-.login-div3 form {
+.signup-div3 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.login-txt1 {
+
+.signup-txt1 {
   font-size: 32px;
   line-height: 43px;
   position: relative;
 }
-.login-txt3 {
+
+.signup-txt3 {
   font-size: 12px;
   line-height: 16px;
 }
-.login-title {
+
+.signup-title {
   margin-bottom: 58px;
 }
 
 /* input container */
-.login-div5 {
+.signup-div5 {
   width: 355px;
   height: 45px;
   border-radius: 8px;
@@ -53,7 +56,7 @@
   margin-bottom: 11px;
 }
 /* input */
-.login-div5 input {
+.signup-div5 input {
   color: var(--GPtextgrey);
   font-size: 17px;
   line-height: 23px;
@@ -61,11 +64,23 @@
   outline: none;
   flex: 1;
 }
+
 /* rectangle 36 */
 .rectangle36 {
-  width: 100%;
+  width: 355px;
   height: 39px;
-  background-color: var(--GPpink);
   border-radius: 8px;
-  text-align: center;
+  background-color: var(--GPpink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2vh;
+  margin-bottom: 11px;
+  border: none;
+  font-size: 20px;
+  line-height: 37px;
+}
+
+.error {
+  color: red;
 }

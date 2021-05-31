@@ -1,74 +1,99 @@
 import "./login.css";
+import React, { useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
-import { MdTurnedIn } from "react-icons/md";
-import { Link } from "react-router-dom";
+import Howdidworks from "../components/Howdidworks.js";
 
-const Login = () => {
+const Login = ({ setToken, setUserId, error, setError }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (email && password) {
+      setError(0);
+      const request = {
+        email: email,
+        password: password,
+      };
+      try {
+        const response = await axios.post(
+          "https://express-gamepad.herokuapp.com/user/login",
+          request
+        );
+        console.log(response.data);
+        setToken(response.data.token);
+        setUserId(response.data._id);
+      } catch (error) {
+        console.log(error.response.data.error);
+      }
+    } else {
+      setError(1);
+    }
+  };
+  const handleEmailChange = (event) => {
+    const value = event.target.value;
+    setEmail(value);
+  };
+  const handlePasswordChange = (event) => {
+    const value = event.target.value;
+    setPassword(value);
+  };
+
   return (
     <>
       <Header />
       <div className="login-div0">
         <div className="login-div1">
-          <div className="login-div2">
-            <div className="login-title">
-              <span className="login-txt1 exo fz500">
-                How it works ?
-                <div className="login-line" />
-              </span>
-            </div>
-            <div className="login-div4">
-              <div className="login-logos"></div>
-              <span className="login-txt2 exo fz500">
-                Log in to your free account to be able to get all features of
-                Gamepad
-              </span>
-            </div>
-            <div className="login-div4">
-              <div className="login-logos"></div>
-              <span className="login-txt2 exo fz500">
-                Add a game to your collection
-              </span>
-            </div>
-            <div className="login-div4">
-              <div className="login-logos"></div>
-              <span className="login-txt2 exo fz500">
-                Leave a review for a game
-              </span>
-            </div>
-          </div>
+          {/* colonne gauche */}
+          <Howdidworks />
+          {/* colonne droite */}
           <div className="login-div3">
             <div className="login-title">
               <span className="login-txt1 exo fz500">Login</span>
             </div>
-            <form action="submit">
-              <div className="search-container">
+            {/* formulaire */}
+            <form onSubmit={handleSubmit}>
+              <div className="login-div5">
                 <input
-                  type="text"
-                  placeholder="Email..."
-                  onChange={(event) => {
-                    console.log(event.target.value);
-                  }}
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={handleEmailChange}
                 />
               </div>
-              <div className="search-container">
+
+              <div className="login-div5">
                 <input
                   type="password"
                   placeholder="Password..."
-                  onChange={(event) => {
-                    console.log(event.target.value);
-                  }}
+                  value={password}
+                  onChange={handlePasswordChange}
                 />
               </div>
-              <div className="button-login">
-                <span className="login exo fw500">Connexion</span>
-              </div>
-              <Link to={`/SignUp`}>
-                <span className="login-txt3 exo fz500">
-                  Don't have an account yet ?
-                </span>
-              </Link>
+
+              <input
+                className="rectangle36 exo fz500"
+                type="submit"
+                value="Connexion"
+              />
+              {error > 0 ? (
+                error === 1 ? (
+                  <p className="error">
+                    Merci de remplir tous les champs du formulaire
+                  </p>
+                ) : null
+              ) : (
+                <Link to={`/signup`}>
+                  <span className="signup-txt3 exo fz500">
+                    Don't have an account yet ?
+                  </span>
+                </Link>
+              )}
             </form>
           </div>
         </div>

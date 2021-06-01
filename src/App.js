@@ -18,6 +18,7 @@ const App = () => {
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState("");
   const [error, setError] = useState(0);
+  const [isMyCollectionPage, setIsMyCollectionPage] = useState(false);
 
   // FAVORIS ADD/REMOVE
   const addFav = (tab) => {
@@ -80,10 +81,17 @@ const App = () => {
                 myCollection={myCollection}
                 setMyCollection={setMyCollection}
                 checkFav={checkFav}
+                isMyCollectionPage={isMyCollectionPage}
+                setIsMyCollectionPage={setIsMyCollectionPage}
               />
             </Route>
             <Route path="/mycollection">
-              <MyCollection fav={fav} removeFav={removeFav} />
+              <MyCollection
+                fav={fav}
+                removeFav={removeFav}
+                isMyCollectionPage={isMyCollectionPage}
+                setIsMyCollectionPage={setIsMyCollectionPage}
+              />
             </Route>
             <Route path="/login">
               <Login
@@ -91,6 +99,8 @@ const App = () => {
                 setUserId={setUserId}
                 error={error}
                 setError={setError}
+                isMyCollectionPage={isMyCollectionPage}
+                setIsMyCollectionPage={setIsMyCollectionPage}
               />
             </Route>
             <Route path="/signup">
@@ -99,10 +109,17 @@ const App = () => {
                 setUserId={setUserId}
                 error={error}
                 setError={setError}
+                isMyCollectionPage={isMyCollectionPage}
+                setIsMyCollectionPage={setIsMyCollectionPage}
               />
             </Route>
             <Route path="/">
-              <HomePage fav={fav} token={token} />
+              <HomePage
+                fav={fav}
+                token={token}
+                isMyCollectionPage={isMyCollectionPage}
+                setIsMyCollectionPage={setIsMyCollectionPage}
+              />
             </Route>
           </Switch>
         </Router>

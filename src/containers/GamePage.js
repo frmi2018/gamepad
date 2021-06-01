@@ -12,7 +12,18 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
 const GamePage = (props) => {
-  const { isFavorite, addFav, checkFav } = props;
+  const {
+    isFavorite,
+    addFav,
+    checkFav,
+    isMyCollectionPage,
+    setIsMyCollectionPage,
+  } = props;
+
+  useEffect(() => {
+    setIsMyCollectionPage(false);
+  }, []);
+
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -44,7 +55,10 @@ const GamePage = (props) => {
     />
   ) : (
     <>
-      <Header />
+      <Header
+        isMyCollectionPage={isMyCollectionPage}
+        setIsMyCollectionPage={setIsMyCollectionPage}
+      />
       <span className="exo fz400 gamepage-txt1">{data.name}</span>
       <div className="gamepage-div2">
         <div className="gamepage-div3">
@@ -110,7 +124,12 @@ const GamePage = (props) => {
                   return <span key={index}>{value.name}</span>;
                 })}
                 <span className="gamepage-txt4">Age rating</span>
-                <span>{data.esrb_rating.id}</span>
+                {/* test si data.esrb_rating exist et n'est pas null */}
+                {data.esrb_rating && data.prefixed.hasOwn(data.esrb_rating) ? (
+                  <span>{data.esrb_rating.id}</span>
+                ) : (
+                  <span>non défini</span>
+                )}
               </div>
             </div>
 

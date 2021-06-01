@@ -4,7 +4,7 @@ import logo from "../assets/logo.svg";
 // -----
 import { Link } from "react-router-dom";
 
-const Header = ({ fav, token }) => {
+const Header = ({ fav, token, isMyCollectionPage, setIsMyCollectionPage }) => {
   return (
     <>
       <div className="header">
@@ -17,17 +17,26 @@ const Header = ({ fav, token }) => {
           </div>
         </Link>
         <div className="header-div2">
-          <Link to={`/MyCollection`} fav={fav}>
-            <span className="mycollection exo fw500">My Collection</span>
-          </Link>
-          {token === "" && (
+          {isMyCollectionPage === false && (
+            <Link
+              to={`/MyCollection`}
+              fav={fav}
+              setIsMyCollectionPage={setIsMyCollectionPage}
+            >
+              <span className="mycollection exo fw500">My Collection</span>
+            </Link>
+          )}
+          {token === "" ? (
             <Link to={`/Login`}>
               <div className="button-login">
                 <span className="login exo fw500">Login</span>
               </div>
             </Link>
+          ) : (
+            <div className="button-login">
+              <span className="login exo fw500">Logout</span>
+            </div>
           )}
-          )
         </div>
       </div>
       <div className="line-top-pink" />

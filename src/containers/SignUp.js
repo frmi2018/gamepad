@@ -1,6 +1,6 @@
 import "./signup.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -8,11 +8,21 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import Howdidworks from "../components/Howdidworks.js";
 
-const SignUp = ({ setToken, setUserId, error, setError }) => {
+const SignUp = ({
+  setToken,
+  setUserId,
+  error,
+  setError,
+  setIsMyCollectionPage,
+}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  useEffect(() => {
+    setIsMyCollectionPage(false);
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

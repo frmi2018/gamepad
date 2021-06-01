@@ -1,5 +1,5 @@
 import "./login.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -7,9 +7,19 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import Howdidworks from "../components/Howdidworks.js";
 
-const Login = ({ setToken, setUserId, error, setError }) => {
+const Login = ({
+  setToken,
+  setUserId,
+  error,
+  setError,
+  setIsMyCollectionPage,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    setIsMyCollectionPage(false);
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

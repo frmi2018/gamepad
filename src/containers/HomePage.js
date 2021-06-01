@@ -1,7 +1,7 @@
 import "./homepage.css";
 
 // Hook
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import composants
 import Header from "../components/Header.js";
 import MainLogo from "../components/MainLogo.js";
@@ -12,7 +12,12 @@ import Pagination from "../components/Pagination.js";
 import Footer from "../components/Footer.js";
 import SearchResult from "../components/SearchResult.js";
 
-const HomePage = ({ fav, token }) => {
+const HomePage = ({
+  fav,
+  token,
+  isMyCollectionPage,
+  setIsMyCollectionPage,
+}) => {
   // stat
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,9 +25,19 @@ const HomePage = ({ fav, token }) => {
   const [search, setSearch] = useState("");
   const [lastPage, setLastPage] = useState("");
 
+  // page mycollection ?
+  useEffect(() => {
+    setIsMyCollectionPage(false);
+  }, []);
+
   return (
     <div>
-      <Header fav={fav} token={token} />
+      <Header
+        fav={fav}
+        token={token}
+        setIsMyCollectionPage={setIsMyCollectionPage}
+        isMyCollectionPage={isMyCollectionPage}
+      />
       <MainLogo />
       <Search
         count={count}

@@ -1,11 +1,12 @@
 import "./fivegames.css";
-// Hook
+// -----
 import { useState, useEffect } from "react";
 // import pour faire des requêtes
 import axios from "axios";
 import { Link } from "react-router-dom";
 // import pour afficher un loader le temps du chargement des données
 import Loader from "react-loader-spinner";
+// components
 import Card from "./Card.js";
 
 const TopMarks = (props) => {

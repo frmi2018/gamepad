@@ -97,7 +97,7 @@ const App = () => {
               />
             </Route>
             <Route path="/review">
-              <Review />
+              <Review userId={userId} />
             </Route>
             <Route path="/signup">
               <SignUp

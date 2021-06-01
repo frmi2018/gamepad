@@ -7,7 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import Header from "../components/Header.js";
 
 const Review = (props) => {
-  const { id, userId } = props;
+  const { userId, id } = props;
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState(0);
@@ -15,8 +15,6 @@ const Review = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("review page :", id, userId);
-
     if (id && userId && title && text) {
       setError(0);
       if (title !== "") {
@@ -24,7 +22,7 @@ const Review = (props) => {
         if (text !== "") {
           setError(0);
           const request = {
-            id: id,
+            gameId: id,
             title: title,
             text: text,
             author: userId,
@@ -69,7 +67,9 @@ const Review = (props) => {
       <Header />
       <div className="review-div1">
         <div className="review-div2">
-          <span className="review-txt1">Write a Review</span>
+          <span className="review-txt1">
+            {userId} Write a Review for {id}
+          </span>
           <Link to={`/games/${id}`}>
             <span className="close-button">X</span>
           </Link>

@@ -14,7 +14,6 @@ import AddReviewButton from "../components/AddReviewButton.js";
 const GamePage = (props) => {
   const { isFavorite, addFav, checkFav, userId } = props;
 
-  console.log(userId);
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -60,7 +59,7 @@ const GamePage = (props) => {
               isFavorite={isFavorite}
               checkFav={checkFav}
             />
-            {{ userId } && <AddReviewButton id={id} userId={userId} />}
+            {{ userId } && <AddReviewButton id={id} />}
           </div>
 
           <div className="gamepage-div4">

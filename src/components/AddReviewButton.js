@@ -2,6 +2,7 @@ import { BiCommentDetail } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const AddReviewButton = ({ id, userId }) => {
+  console.log(id, userId);
   return (
     <Link to={`/Review`} id={id} userId={userId}>
       <div className="gamepage-btn">

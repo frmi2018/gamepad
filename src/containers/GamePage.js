@@ -5,24 +5,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import { BiCommentDetail } from "react-icons/bi";
-import { MdTurnedInNot, MdTurnedIn } from "react-icons/md";
+import AddCollectionButton from "./AddCollectionButton.js";
 
 // import components
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
 const GamePage = (props) => {
-  const {
-    isFavorite,
-    addFav,
-    checkFav,
-    isMyCollectionPage,
-    setIsMyCollectionPage,
-  } = props;
-
-  useEffect(() => {
-    setIsMyCollectionPage(false);
-  }, []);
+  const { isFavorite, addFav, checkFav } = props;
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -55,10 +45,7 @@ const GamePage = (props) => {
     />
   ) : (
     <>
-      <Header
-        isMyCollectionPage={isMyCollectionPage}
-        setIsMyCollectionPage={setIsMyCollectionPage}
-      />
+      <Header />
       <span className="exo fz400 gamepage-txt1">{data.name}</span>
       <div className="gamepage-div2">
         <div className="gamepage-div3">
@@ -66,24 +53,12 @@ const GamePage = (props) => {
         </div>
         <div className="gamepage-div0 exo fz400">
           <div className="gamepage-div5">
-            <div
-              className="gamepage-btn"
-              onClick={() =>
-                addFav([data.id, data.background_image, data.name])
-              }
-            >
-              <div className="gamepage-btn-div1">
-                {isFavorite ? (
-                  <span>Remove collection</span>
-                ) : (
-                  <span>Save to Collection</span>
-                )}
-              </div>
-              <div className="gamepage-btn-div2">
-                {checkFav(data.id)}
-                {isFavorite ? <MdTurnedIn /> : <MdTurnedInNot />}
-              </div>
-            </div>
+            <AddCollectionButton
+              addFav={addFav}
+              data={data}
+              isFavorite={isFavorite}
+              checkFav={checkFav}
+            />
             <div className="gamepage-btn exo fz400">
               <div className="gamepage-btn-div1">
                 <span className="gamepage-txt3">Add a Review</span>
@@ -125,11 +100,15 @@ const GamePage = (props) => {
                 })}
                 <span className="gamepage-txt4">Age rating</span>
                 {/* test si data.esrb_rating exist et n'est pas null */}
-                {data.esrb_rating && data.prefixed.hasOwn(data.esrb_rating) ? (
-                  <span>{data.esrb_rating.id}</span>
+                {/* {data.esrb_rating ? (
+                  data.prefixed.hasOwn(data.esrb_rating) ? (
+                    <span>{data.esrb_rating.id}</span>
+                  ) : (
+                    <span>null</span>
+                  )
                 ) : (
-                  <span>non défini</span>
-                )}
+                  <span>undefined</span>
+                )} */}
               </div>
             </div>
 

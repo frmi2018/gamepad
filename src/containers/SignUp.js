@@ -1,28 +1,19 @@
 import "./signup.css";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import Howdidworks from "../components/Howdidworks.js";
 
-const SignUp = ({
-  setToken,
-  setUserId,
-  error,
-  setError,
-  setIsMyCollectionPage,
-}) => {
+const SignUp = ({ setToken, setUserId, error, setError }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  useEffect(() => {
-    setIsMyCollectionPage(false);
-  }, []);
+  let history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -44,6 +35,7 @@ const SignUp = ({
           console.log(response.data);
           setToken(response.data.token);
           setUserId(response.data._id);
+          history.push("/");
         } catch (error) {
           console.log(error.response.data.error);
           if (error.response.data.error === "This email is already used") {

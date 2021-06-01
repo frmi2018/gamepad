@@ -2,9 +2,10 @@ import "./header.css";
 // -----
 import logo from "../assets/logo.svg";
 // -----
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const Header = ({ fav, token, isMyCollectionPage, setIsMyCollectionPage }) => {
+const Header = ({ fav, token }) => {
+  const location = useLocation();
   return (
     <>
       <div className="header">
@@ -17,16 +18,12 @@ const Header = ({ fav, token, isMyCollectionPage, setIsMyCollectionPage }) => {
           </div>
         </Link>
         <div className="header-div2">
-          {isMyCollectionPage === false && (
-            <Link
-              to={`/MyCollection`}
-              fav={fav}
-              setIsMyCollectionPage={setIsMyCollectionPage}
-            >
-              <span className="mycollection exo fw500">My Collection</span>
+          {location.pathname !== "/MyCollection" && (
+            <Link to={`/MyCollection`} fav={fav}>
+              <span className="mycollection exo fw500">My collection</span>
             </Link>
           )}
-          {token === "" ? (
+          {{ token }.length === 0 ? (
             <Link to={`/Login`}>
               <div className="button-login">
                 <span className="login exo fw500">Login</span>
@@ -34,7 +31,7 @@ const Header = ({ fav, token, isMyCollectionPage, setIsMyCollectionPage }) => {
             </Link>
           ) : (
             <div className="button-login">
-              <span className="login exo fw500">Logout</span>
+              <span className="login exo fw500">Profil</span>
             </div>
           )}
         </div>

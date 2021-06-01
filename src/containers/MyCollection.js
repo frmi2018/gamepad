@@ -5,20 +5,11 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import Card from "../components/Card.js";
 import { MdTurnedIn } from "react-icons/md";
-import { useEffect } from "react";
 
-const MyCollection = ({
-  fav,
-  removeFav,
-  isMyCollectionPage,
-  setIsMyCollectionPage,
-}) => {
-  useEffect(() => {
-    setIsMyCollectionPage(true);
-  }, []);
+const MyCollection = ({ fav, removeFav }) => {
   return (
     <>
-      <Header isMyCollectionPage={isMyCollectionPage} />
+      <Header />
       <div className="mycollection-div0">
         <div className="mycollection-title">
           <span className="mycollection-txt1 exo fz400">
@@ -42,7 +33,7 @@ const MyCollection = ({
 
                 <MdTurnedIn
                   className="turnedin-pink"
-                  title="Supprimer de votre collection"
+                  title={game[0]}
                   onClick={() => removeFav(game[0])}
                 />
               </div>

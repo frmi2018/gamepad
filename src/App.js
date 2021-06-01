@@ -15,10 +15,10 @@ const App = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   let cookie = Cookies.get("fav");
   const [fav, setFav] = useState((cookie && JSON.parse(cookie)) || []);
-  const [token, setToken] = useState("");
-  const [userId, setUserId] = useState("");
+  let cookie2 = Cookies.getJSON("user");
+  const [token, setToken] = useState(cookie2.token || undefined);
+  const [userId, setUserId] = useState(cookie2.id || undefined);
   const [error, setError] = useState(0);
-  const [isMyCollectionPage, setIsMyCollectionPage] = useState(false);
 
   // FAVORIS ADD/REMOVE
   const addFav = (tab) => {
@@ -36,7 +36,7 @@ const App = () => {
       setIsFavorite(true);
     }
     setFav(favCopy);
-    Cookies.set("fav", favCopy);
+    Cookies.set("fav", favCopy, { expires: 1 });
   };
 
   // FAVORIS REMOVE
@@ -44,12 +44,12 @@ const App = () => {
     let favCopy = [...fav];
     for (let i = 0; i < favCopy.length; i++) {
       if (favCopy[i][0] === id) {
-        favCopy.splice(favCopy[i], 1);
+        favCopy.splice(i, 1);
         setIsFavorite(false);
       }
     }
     setFav(favCopy);
-    Cookies.set("fav", favCopy);
+    Cookies.set("fav", favCopy, { expires: 1 });
   };
 
   // FAVORIS CHECK
@@ -81,17 +81,10 @@ const App = () => {
                 myCollection={myCollection}
                 setMyCollection={setMyCollection}
                 checkFav={checkFav}
-                isMyCollectionPage={isMyCollectionPage}
-                setIsMyCollectionPage={setIsMyCollectionPage}
               />
             </Route>
             <Route path="/mycollection">
-              <MyCollection
-                fav={fav}
-                removeFav={removeFav}
-                isMyCollectionPage={isMyCollectionPage}
-                setIsMyCollectionPage={setIsMyCollectionPage}
-              />
+              <MyCollection fav={fav} removeFav={removeFav} />
             </Route>
             <Route path="/login">
               <Login
@@ -99,8 +92,6 @@ const App = () => {
                 setUserId={setUserId}
                 error={error}
                 setError={setError}
-                isMyCollectionPage={isMyCollectionPage}
-                setIsMyCollectionPage={setIsMyCollectionPage}
               />
             </Route>
             <Route path="/signup">
@@ -109,17 +100,10 @@ const App = () => {
                 setUserId={setUserId}
                 error={error}
                 setError={setError}
-                isMyCollectionPage={isMyCollectionPage}
-                setIsMyCollectionPage={setIsMyCollectionPage}
               />
             </Route>
             <Route path="/">
-              <HomePage
-                fav={fav}
-                token={token}
-                isMyCollectionPage={isMyCollectionPage}
-                setIsMyCollectionPage={setIsMyCollectionPage}
-              />
+              <HomePage fav={fav} token={token} />
             </Route>
           </Switch>
         </Router>

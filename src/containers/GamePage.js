@@ -4,16 +4,17 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
-import { BiCommentDetail } from "react-icons/bi";
-import AddCollectionButton from "./AddCollectionButton.js";
 
 // import components
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
+import AddCollectionButton from "../components/AddCollectionButton.js";
+import AddReviewButton from "../components/AddReviewButton.js";
 
 const GamePage = (props) => {
-  const { isFavorite, addFav, checkFav } = props;
+  const { isFavorite, addFav, checkFav, userId } = props;
 
+  console.log(userId);
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -59,15 +60,7 @@ const GamePage = (props) => {
               isFavorite={isFavorite}
               checkFav={checkFav}
             />
-            <div className="gamepage-btn exo fz400">
-              <div className="gamepage-btn-div1">
-                <span className="gamepage-txt3">Add a Review</span>
-              </div>
-
-              <div className="gamepage-btn-div2">
-                <BiCommentDetail />
-              </div>
-            </div>
+            {{ userId } && <AddReviewButton id={id} userId={userId} />}
           </div>
 
           <div className="gamepage-div4">

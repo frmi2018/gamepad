@@ -9,6 +9,7 @@ import GamePage from "./containers/GamePage.js";
 import MyCollection from "./containers/MyCollection.js";
 import Login from "./containers/Login.js";
 import SignUp from "./containers/SignUp.js";
+import Review from "./containers/Review.js";
 
 const App = () => {
   const [myCollection, setMyCollection] = useState(true);
@@ -26,7 +27,7 @@ const App = () => {
     let check = false;
     for (let i = 0; i < favCopy.length; i++) {
       if (favCopy[i][0] === tab[0]) {
-        favCopy.splice(favCopy[i], 1);
+        favCopy.splice(i, 1);
         setIsFavorite(false);
         check = true;
       }
@@ -81,6 +82,7 @@ const App = () => {
                 myCollection={myCollection}
                 setMyCollection={setMyCollection}
                 checkFav={checkFav}
+                userId={userId}
               />
             </Route>
             <Route path="/mycollection">
@@ -93,6 +95,9 @@ const App = () => {
                 error={error}
                 setError={setError}
               />
+            </Route>
+            <Route path="/review">
+              <Review />
             </Route>
             <Route path="/signup">
               <SignUp

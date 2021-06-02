@@ -9,27 +9,18 @@ import Loader from "react-loader-spinner";
 import ReviewContainer from "./ReviewContainer.js";
 
 const ShowReviews = ({ id }) => {
-  console.log(id);
-  // state
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-
   // requête serveur pour récupérer les données
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const request = {
-          gameId: id,
-        };
         // const response = await axios.get(
-        //   `http://localhost:4000/user/getreview`,
-        //   request
+        //   `http://localhost:4000/user/getreview?id=${id}`
         // );
         const response = await axios.get(
-          `https://express-gamepad.herokuapp.com/user/getreview`,
-          request
+          `https://express-gamepad.herokuapp.com/user/getreview?id=${id}`
         );
-        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {

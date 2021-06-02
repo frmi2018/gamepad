@@ -10,6 +10,7 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import AddCollectionButton from "../components/AddCollectionButton.js";
 import AddReviewButton from "../components/AddReviewButton.js";
+import ShowReviews from "../components/ShowReviews.js";
 
 const GamePage = (props) => {
   const { isFavorite, addFav, checkFav, userId, fav, token } = props;
@@ -114,6 +115,7 @@ const GamePage = (props) => {
           </div>
         </div>
       </div>
+      <ShowReviews id={id} />
       <Footer />
     </>
   );

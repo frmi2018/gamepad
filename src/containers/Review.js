@@ -5,8 +5,9 @@ import axios from "axios";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 import Header from "../components/Header.js";
+import Footer from "../components/Footer.js";
 
-const Review = ({ token }) => {
+const Review = ({ token, setToken, setUserId }) => {
   let data = useLocation();
   let id = data.state.id;
   let userId = data.state.userId;
@@ -29,9 +30,8 @@ const Review = ({ token }) => {
             text: text,
             author: userId,
           };
-          console.log(request);
           try {
-            const response = await axios.post(
+            await axios.post(
               "https://express-gamepad.herokuapp.com/user/postreview",
               request
             );
@@ -66,31 +66,36 @@ const Review = ({ token }) => {
 
   return (
     <>
-      <Header token={token} />
-      <div className="review-div1">
-        <div className="review-div2">
-          <span className="review-txt1">Write a Review</span>
-          <Link to={`/games/${id}`}>
-            <span className="close-button">X</span>
-          </Link>
-        </div>
-        <form onSubmit={handleSubmit} className="review-div3">
-          <span>Review title</span>
-          <input
-            type="text"
-            value={title}
-            onChange={handleTitleChange}
-            className="review-div4"
-          />
-          <span>Review text</span>
-          <input
-            type="area"
-            value={text}
-            onChange={handleTextChange}
-            className="review-div5"
-          />
-          <input className="publish exo fz500" type="submit" value="Publish" />
-
+      <Header token={token} setToken={setToken} setUserId={setUserId} />
+      <div className="review-div0">
+        <div className="review-div1">
+          <div className="review-div2 exo fz500">
+            <span className="review-txt1">Write a Review</span>
+            <Link to={`/games/${id}`}>
+              <span className="close-button">X</span>
+            </Link>
+          </div>
+          <form onSubmit={handleSubmit} className="review-div3">
+            <span className="review-txt2">Review title</span>
+            <input
+              type="text"
+              value={title}
+              onChange={handleTitleChange}
+              className="review-div4"
+            />
+            <span className="review-txt2">Review text</span>
+            <input
+              type="area"
+              value={text}
+              onChange={handleTextChange}
+              className="review-div5"
+            />
+            <input
+              className="publish exo fz500"
+              type="submit"
+              value="Publish"
+            />
+          </form>
           {error > 0 &&
             (error === 1 ? (
               <p className="error">
@@ -101,8 +106,9 @@ const Review = ({ token }) => {
             ) : error === 3 ? (
               <p className="error">Il manque un texte</p>
             ) : null)}
-        </form>
+        </div>
       </div>
+      <Footer />
     </>
   );
 };

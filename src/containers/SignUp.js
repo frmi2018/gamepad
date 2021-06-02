@@ -75,7 +75,7 @@ const SignUp = ({ setToken, setUserId, token }) => {
 
   return (
     <>
-      <Header token={token} />
+      <Header token={token} setToken={setToken} setUserId={setUserId} />
       <div className="signup-div0">
         <div className="signup-div1">
           {/* colonne gauche */}

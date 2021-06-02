@@ -10,10 +10,19 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import AddCollectionButton from "../components/AddCollectionButton.js";
 import AddReviewButton from "../components/AddReviewButton.js";
-import ShowReviews from "../components/ShowReviews.js";
+import ReviewSection from "../components/ReviewSection.js";
 
 const GamePage = (props) => {
-  const { isFavorite, addFav, checkFav, userId, fav, token } = props;
+  const {
+    isFavorite,
+    addFav,
+    checkFav,
+    userId,
+    fav,
+    token,
+    setToken,
+    setUserId,
+  } = props;
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -45,7 +54,12 @@ const GamePage = (props) => {
     />
   ) : (
     <>
-      <Header fav={fav} token={token} />
+      <Header
+        fav={fav}
+        token={token}
+        setToken={setToken}
+        setUserId={setUserId}
+      />
       <span className="exo fz400 gamepage-txt1">{data.name}</span>
       <div className="gamepage-div2">
         <div className="gamepage-div3">
@@ -94,16 +108,7 @@ const GamePage = (props) => {
                   return <span key={index}>{value.name}</span>;
                 })}
                 <span className="gamepage-txt4">Age rating</span>
-                {/* test si data.esrb_rating exist et n'est pas null */}
-                {/* {data.esrb_rating ? (
-                  data.prefixed.hasOwn(data.esrb_rating) ? (
-                    <span>{data.esrb_rating.id}</span>
-                  ) : (
-                    <span>null</span>
-                  )
-                ) : (
-                  <span>undefined</span>
-                )} */}
+                <span>4</span>
               </div>
             </div>
 
@@ -115,7 +120,7 @@ const GamePage = (props) => {
           </div>
         </div>
       </div>
-      <ShowReviews id={id} />
+      <ReviewSection id={id} />
       <Footer />
     </>
   );

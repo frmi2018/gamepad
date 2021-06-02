@@ -68,19 +68,19 @@ const Login = ({ setToken, setUserId, token }) => {
 
   return (
     <>
-      <Header token={token} />
-      <div className="login-div0">
-        <div className="login-div1">
+      <Header token={token} setToken={setToken} setUserId={setUserId} />
+      <div className="button-pink-txt-div0">
+        <div className="button-pink-txt-div1">
           {/* colonne gauche */}
           <Howdidworks />
           {/* colonne droite */}
-          <div className="login-div3">
-            <div className="login-title">
-              <span className="login-txt1 exo fz500">Login</span>
+          <div className="button-pink-txt-div3">
+            <div className="button-pink-txt-title">
+              <span className="button-pink-txt-txt1 exo fz500">Login</span>
             </div>
             {/* formulaire */}
             <form onSubmit={handleSubmit}>
-              <div className="login-div5">
+              <div className="button-pink-txt-div5">
                 <input
                   type="email"
                   placeholder="Email"
@@ -89,7 +89,7 @@ const Login = ({ setToken, setUserId, token }) => {
                 />
               </div>
 
-              <div className="login-div5">
+              <div className="button-pink-txt-div5">
                 <input
                   type="password"
                   placeholder="Password..."

@@ -79,23 +79,36 @@ const App = () => {
                 isFavorite={isFavorite}
                 addFav={addFav}
                 checkFav={checkFav}
+                setToken={setToken}
                 userId={userId}
+                setUserId={setUserId}
               />
             </Route>
             <Route path="/mycollection">
-              <MyCollection fav={fav} removeFav={removeFav} token={token} />
+              <MyCollection
+                fav={fav}
+                removeFav={removeFav}
+                token={token}
+                setToken={setToken}
+                setUserId={setUserId}
+              />
             </Route>
             <Route path="/login">
               <Login setToken={setToken} setUserId={setUserId} token={token} />
             </Route>
             <Route path="/review">
-              <Review token={token} />
+              <Review token={token} setToken={setToken} setUserId={setUserId} />
             </Route>
             <Route path="/signup">
               <SignUp setToken={setToken} setUserId={setUserId} token={token} />
             </Route>
             <Route path="/">
-              <HomePage fav={fav} token={token} />
+              <HomePage
+                fav={fav}
+                token={token}
+                setToken={setToken}
+                setUserId={setUserId}
+              />
             </Route>
           </Switch>
         </Router>

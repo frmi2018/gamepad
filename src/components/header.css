@@ -38,7 +38,7 @@
   line-height: 27px;
 }
 
-.button-login {
+.button-pink {
   width: 85px;
   height: 37px;
   background-color: var(--GPpink);
@@ -48,16 +48,15 @@
   text-align: center;
 }
 
-.button-login:hover {
+.button-pink:hover {
   opacity: 0.5;
   cursor: pointer;
 }
 
-.login {
+.button-pink-txt {
   font-size: 20px;
   line-height: 37px;
 }
-
 .line-top-pink {
   border-bottom: 2px solid var(--GPpink);
   margin-bottom: 45px;

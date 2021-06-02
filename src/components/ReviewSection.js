@@ -1,4 +1,4 @@
-import "./showreviews.css";
+import "./reviewsection.css";
 // -----
 import { useState, useEffect } from "react";
 // import pour faire des requêtes
@@ -8,19 +8,19 @@ import Loader from "react-loader-spinner";
 // components
 import ReviewContainer from "./ReviewContainer.js";
 
-const ShowReviews = ({ id }) => {
+const ReviewSection = ({ id }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   // requête serveur pour récupérer les données
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(
-        //   `http://localhost:4000/user/getreview?id=${id}`
-        // );
         const response = await axios.get(
-          `https://express-gamepad.herokuapp.com/user/getreview?id=${id}`
+          `http://localhost:4000/user/getreview?id=${id}`
         );
+        // const response = await axios.get(
+        //   `https://express-gamepad.herokuapp.com/user/getreview?id=${id}`
+        // );
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -28,7 +28,7 @@ const ShowReviews = ({ id }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <Loader
@@ -39,22 +39,24 @@ const ShowReviews = ({ id }) => {
       width={80}
     />
   ) : (
-    <div className="sr-div0">
-      <div className="sr-div1">
+    <div className="review-section-div0">
+      <div className="review-section-div1">
         <span className="reviews exo fz400">Reviews</span>
         <span className="nb-review exo fz400">{data.review.length}</span>
       </div>
       {data.review.length > 0 ? (
         <>
-          <span className="sr-txt1 exo">Most relevant review</span>
-          {data.review.map((game, index) => {
-            return <ReviewContainer key={index} game={game} />;
+          <span className="review-section-txt1 exo">Most relevant review</span>
+          {data.review.map((review, index) => {
+            return <ReviewContainer key={index} review={review} />;
           })}
         </>
       ) : (
-        <span className="sr-txt2 exo">No review for this game !</span>
+        <span className="review-section-txt2 exo">
+          No review for this game !
+        </span>
       )}
     </div>
   );
 };
-export default ShowReviews;
+export default ReviewSection;

@@ -6,10 +6,10 @@ import Footer from "../components/Footer.js";
 import Card from "../components/Card.js";
 import { MdTurnedIn } from "react-icons/md";
 
-const MyCollection = ({ fav, removeFav, token }) => {
+const MyCollection = ({ fav, removeFav, token, setToken, setUserId }) => {
   return (
     <>
-      <Header token={token} />
+      <Header token={token} setToken={setToken} setUserId={setUserId} />
       <div className="mycollection-div0">
         <div className="mycollection-title">
           <span className="mycollection-txt1 exo fz400">

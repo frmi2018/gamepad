@@ -1,0 +1,83 @@
+/* review container */
+.rc-div1 {
+  background-color: rgba(255, 255, 255, 0.05);
+  height: 178px;
+  border-radius: 8px;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 2.5vh 23px;
+}
+.rc-div1 p {
+  min-height: 4vh;
+  margin-bottom: 17px;
+  margin-top: 8px;
+}
+.rc-div2 {
+  background-color: cadetblue;
+  width: 58px;
+  height: 58px;
+  border-radius: 29px;
+  margin-right: 7px;
+}
+.rc-div3 {
+  width: 24px;
+  height: 24px;
+  border-radius: 29px;
+}
+.rc-div4 {
+  display: flex;
+  align-items: center;
+}
+.rc-div5 {
+  display: flex;
+  flex-direction: column;
+}
+.rc-div6 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.rc-div7 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.rc-div8 {
+  margin: 8px;
+}
+
+/* review container text */
+.rc-txt-xl {
+  font-size: 18px;
+  line-height: 24px;
+}
+.underline {
+  text-decoration: underline;
+}
+.rc-txt-l {
+  font-size: 16px;
+  line-height: 21px;
+}
+.rc-txt-m {
+  font-size: 14px;
+  line-height: 19px;
+}
+.rc-txt-xs {
+  font-size: 9px;
+  line-height: 12px;
+}
+/* review container colors */
+.rc-green {
+  color: rgba(116, 217, 99, 1);
+}
+.rc-pink {
+  color: rgba(255, 70, 85, 1);
+}
+.rc-grey {
+  color: rgba(103, 103, 103, 1);
+}
+/* review container other */
+.rc-first-review {
+  border: 3px rgba(255, 70, 85, 1);
+}

@@ -3,8 +3,9 @@ import "./header.css";
 import logo from "../assets/logo.svg";
 // -----
 import { Link, useLocation } from "react-router-dom";
+import Profil from "./Profil.js";
 
-const Header = ({ fav, token }) => {
+const Header = ({ fav, token, setToken, setUserId }) => {
   const location = useLocation();
   return (
     <>
@@ -20,8 +21,8 @@ const Header = ({ fav, token }) => {
         <div className="header-div2">
           {token === undefined ? (
             <Link to={`/Login`}>
-              <div className="button-login">
-                <span className="login exo fw500">Login</span>
+              <div className="button-pink">
+                <span className="button-pink-txt exo fw500">Login</span>
               </div>
             </Link>
           ) : location.pathname !== "/MyCollection" ? (
@@ -29,14 +30,10 @@ const Header = ({ fav, token }) => {
               <Link to={{ pathname: `/MyCollection`, state: { fav: fav } }}>
                 <span className="mycollection exo fw500">My collection</span>
               </Link>
-              <div className="button-login">
-                <span className="login exo fw500">Profil</span>
-              </div>
+              <Profil setUserId={setUserId} setToken={setToken} />
             </>
           ) : (
-            <div className="button-login">
-              <span className="login exo fw500">Profil</span>
-            </div>
+            <Profil setUserId={setUserId} setToken={setToken} />
           )}
         </div>
       </div>

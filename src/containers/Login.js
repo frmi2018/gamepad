@@ -7,9 +7,10 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import Howdidworks from "../components/Howdidworks.js";
 
-const Login = ({ setToken, setUserId, error, setError }) => {
+const Login = ({ setToken, setUserId, token }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(0);
   let history = useHistory();
 
   const handleSubmit = async (event) => {
@@ -67,7 +68,7 @@ const Login = ({ setToken, setUserId, error, setError }) => {
 
   return (
     <>
-      <Header />
+      <Header token={token} />
       <div className="login-div0">
         <div className="login-div1">
           {/* colonne gauche */}

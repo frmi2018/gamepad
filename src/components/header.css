@@ -48,6 +48,11 @@
   text-align: center;
 }
 
+.button-login:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
 .login {
   font-size: 20px;
   line-height: 37px;

@@ -8,11 +8,12 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import Howdidworks from "../components/Howdidworks.js";
 
-const SignUp = ({ setToken, setUserId, error, setError }) => {
+const SignUp = ({ setToken, setUserId, token }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(0);
   let history = useHistory();
 
   const handleSubmit = async (event) => {
@@ -74,7 +75,7 @@ const SignUp = ({ setToken, setUserId, error, setError }) => {
 
   return (
     <>
-      <Header />
+      <Header token={token} />
       <div className="signup-div0">
         <div className="signup-div1">
           {/* colonne gauche */}

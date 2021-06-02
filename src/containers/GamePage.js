@@ -12,8 +12,7 @@ import AddCollectionButton from "../components/AddCollectionButton.js";
 import AddReviewButton from "../components/AddReviewButton.js";
 
 const GamePage = (props) => {
-  const { isFavorite, addFav, checkFav, userId } = props;
-
+  const { isFavorite, addFav, checkFav, userId, fav, token } = props;
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -45,22 +44,25 @@ const GamePage = (props) => {
     />
   ) : (
     <>
-      <Header />
+      <Header fav={fav} token={token} />
       <span className="exo fz400 gamepage-txt1">{data.name}</span>
       <div className="gamepage-div2">
         <div className="gamepage-div3">
           <img src={data.background_image} alt={data.name} />
         </div>
+
         <div className="gamepage-div0 exo fz400">
-          <div className="gamepage-div5">
-            <AddCollectionButton
-              addFav={addFav}
-              data={data}
-              isFavorite={isFavorite}
-              checkFav={checkFav}
-            />
-            {{ userId } && <AddReviewButton id={id} />}
-          </div>
+          {userId && (
+            <div className="gamepage-div5">
+              <AddCollectionButton
+                addFav={addFav}
+                data={data}
+                isFavorite={isFavorite}
+                checkFav={checkFav}
+              />
+              <AddReviewButton userId={userId} id={id} />
+            </div>
+          )}
 
           <div className="gamepage-div4">
             <div className="gamepage-div6 exo fz400">

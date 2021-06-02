@@ -28,11 +28,11 @@
   height: 250px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .mycollection-div2 {
   position: relative;
+  margin-right: 8px;
 }
 
 .turnedin-pink {
@@ -44,5 +44,6 @@
 }
 
 .turnedin-pink:hover {
-  color: red;
+  opacity: 0.5;
+  cursor: pointer;
 }

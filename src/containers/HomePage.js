@@ -12,7 +12,8 @@ import Pagination from "../components/Pagination.js";
 import Footer from "../components/Footer.js";
 import SearchResult from "../components/SearchResult.js";
 
-const HomePage = ({ fav, token }) => {
+const HomePage = (props) => {
+  const { fav, token } = props;
   // stat
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);

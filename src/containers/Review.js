@@ -2,12 +2,14 @@ import "./review.css";
 
 import { useState } from "react";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 import Header from "../components/Header.js";
 
-const Review = (props) => {
-  const { userId, id } = props;
+const Review = ({ token }) => {
+  let data = useLocation();
+  let id = data.state.id;
+  let userId = data.state.userId;
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState(0);
@@ -33,8 +35,8 @@ const Review = (props) => {
               "https://express-gamepad.herokuapp.com/user/postreview",
               request
             );
-            console.log(response.data);
-            history.push("/");
+            // console.log(response.data);
+            history.push(`/games/${id}`);
           } catch (error) {
             console.log(error.response.data.error);
           }
@@ -64,12 +66,10 @@ const Review = (props) => {
 
   return (
     <>
-      <Header />
+      <Header token={token} />
       <div className="review-div1">
         <div className="review-div2">
-          <span className="review-txt1">
-            {userId} Write a Review for {id}
-          </span>
+          <span className="review-txt1">Write a Review</span>
           <Link to={`/games/${id}`}>
             <span className="close-button">X</span>
           </Link>

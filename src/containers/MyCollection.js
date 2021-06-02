@@ -6,10 +6,10 @@ import Footer from "../components/Footer.js";
 import Card from "../components/Card.js";
 import { MdTurnedIn } from "react-icons/md";
 
-const MyCollection = ({ fav, removeFav }) => {
+const MyCollection = ({ fav, removeFav, token }) => {
   return (
     <>
-      <Header />
+      <Header token={token} />
       <div className="mycollection-div0">
         <div className="mycollection-title">
           <span className="mycollection-txt1 exo fz400">
@@ -33,7 +33,7 @@ const MyCollection = ({ fav, removeFav }) => {
 
                 <MdTurnedIn
                   className="turnedin-pink"
-                  title={game[0]}
+                  title={"Click to remove this game from your collection"}
                   onClick={() => removeFav(game[0])}
                 />
               </div>

@@ -12,14 +12,12 @@ import SignUp from "./containers/SignUp.js";
 import Review from "./containers/Review.js";
 
 const App = () => {
-  const [myCollection, setMyCollection] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false);
   let cookie = Cookies.get("fav");
   const [fav, setFav] = useState((cookie && JSON.parse(cookie)) || []);
   let cookie2 = Cookies.getJSON("user");
-  const [token, setToken] = useState(cookie2.token || undefined);
-  const [userId, setUserId] = useState(cookie2.id || undefined);
-  const [error, setError] = useState(0);
+  const [token, setToken] = useState((cookie2 && cookie2.token) || undefined);
+  const [userId, setUserId] = useState((cookie2 && cookie2.id) || undefined);
 
   // FAVORIS ADD/REMOVE
   const addFav = (tab) => {
@@ -77,35 +75,24 @@ const App = () => {
             <Route path="/games/:id">
               <GamePage
                 fav={fav}
+                token={token}
                 isFavorite={isFavorite}
                 addFav={addFav}
-                myCollection={myCollection}
-                setMyCollection={setMyCollection}
                 checkFav={checkFav}
                 userId={userId}
               />
             </Route>
             <Route path="/mycollection">
-              <MyCollection fav={fav} removeFav={removeFav} />
+              <MyCollection fav={fav} removeFav={removeFav} token={token} />
             </Route>
             <Route path="/login">
-              <Login
-                setToken={setToken}
-                setUserId={setUserId}
-                error={error}
-                setError={setError}
-              />
+              <Login setToken={setToken} setUserId={setUserId} token={token} />
             </Route>
             <Route path="/review">
-              <Review userId={userId} />
+              <Review token={token} />
             </Route>
             <Route path="/signup">
-              <SignUp
-                setToken={setToken}
-                setUserId={setUserId}
-                error={error}
-                setError={setError}
-              />
+              <SignUp setToken={setToken} setUserId={setUserId} token={token} />
             </Route>
             <Route path="/">
               <HomePage fav={fav} token={token} />

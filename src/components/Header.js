@@ -18,17 +18,21 @@ const Header = ({ fav, token }) => {
           </div>
         </Link>
         <div className="header-div2">
-          {location.pathname !== "/MyCollection" && (
-            <Link to={`/MyCollection`} fav={fav}>
-              <span className="mycollection exo fw500">My collection</span>
-            </Link>
-          )}
-          {{ token }.length === 0 ? (
+          {token === undefined ? (
             <Link to={`/Login`}>
               <div className="button-login">
                 <span className="login exo fw500">Login</span>
               </div>
             </Link>
+          ) : location.pathname !== "/MyCollection" ? (
+            <>
+              <Link to={{ pathname: `/MyCollection`, state: { fav: fav } }}>
+                <span className="mycollection exo fw500">My collection</span>
+              </Link>
+              <div className="button-login">
+                <span className="login exo fw500">Profil</span>
+              </div>
+            </>
           ) : (
             <div className="button-login">
               <span className="login exo fw500">Profil</span>

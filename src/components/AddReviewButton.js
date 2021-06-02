@@ -1,12 +1,12 @@
 import { BiCommentDetail } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-const AddReviewButton = ({ id }) => {
+const AddReviewButton = ({ userId, id }) => {
   return (
-    <Link to={`/Review`} id={id}>
+    <Link to={{ pathname: "/Review", state: { userId: userId, id: id } }}>
       <div className="gamepage-btn">
         <div className="gamepage-btn-div1">
-          <span className="gamepage-txt3">Add a Review {id}</span>
+          <span className="gamepage-txt3">Add a Review</span>
         </div>
 
         <div className="gamepage-btn-div2">

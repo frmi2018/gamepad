@@ -16,11 +16,9 @@ const ReviewSection = ({ id }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/user/getreview?id=${id}`
+          // `http://localhost:4000/user/getreview?id=${id}`
+          `https://express-gamepad.herokuapp.com/user/getreview?id=${id}`
         );
-        // const response = await axios.get(
-        //   `https://express-gamepad.herokuapp.com/user/getreview?id=${id}`
-        // );
         setData(response.data);
         setIsLoading(false);
       } catch (error) {

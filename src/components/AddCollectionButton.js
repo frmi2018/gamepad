@@ -1,54 +1,56 @@
 import { MdTurnedInNot, MdTurnedIn } from "react-icons/md";
-import Cookies from "js-cookie";
+// import pour faire des requêtes
+import axios from "axios";
+import { useEffect } from "react";
 
 const AddCollectionButton = (props) => {
-  const { data, isFavorite, fav, setIsFavorite, setFav } = props;
+  const { data, isFavorite, setIsFavorite, userId } = props;
 
-  // const test = () => {
-  //   console.log("test");
-  // };
-
-  // FAVORIS ADD/REMOVE
-  const addFav = (tab) => {
-    let favCopy = [...fav];
-    let check = false;
-    for (let i = 0; i < favCopy.length; i++) {
-      if (favCopy[i][0] === tab[0]) {
-        favCopy.splice(i, 1);
+  const test = async () => {
+    try {
+      const request = {
+        userId: userId,
+        gameId: data.id,
+        gameName: data.name,
+        gamePictureURL: data.background_image,
+      };
+      const response = await axios.post(
+        // `http://localhost:4000/user/postfavoris`,
+        // request
+        `https://express-gamepad.herokuapp.com/user/postfavoris`,
+        request
+      );
+      if (response.data.message === "game added") {
+        setIsFavorite(true);
+      } else {
         setIsFavorite(false);
-        check = true;
       }
+    } catch (error) {
+      console.log(error.message);
     }
-    if (check === false) {
-      favCopy.push(tab);
-      setIsFavorite(true);
-    }
-    setFav(favCopy);
-    Cookies.set("fav", favCopy, { expires: 1 });
   };
 
-  // FAVORIS CHECK
-  const checkFav = (id) => {
-    let favCopy = [...fav];
-    let check = false;
-    for (let i = 0; i < favCopy.length; i++) {
-      if (favCopy[i][0] === id) {
-        check = true;
+  useEffect(() => {
+    const test2 = async () => {
+      try {
+        const response = await axios.get(
+          // `http://localhost:4000/user/getfavoris?userId=${userId}&gameId=${data.id}`
+          `https://express-gamepad.herokuapp.com/user/getfavoris?userId=${userId}&gameId=${data.id}`
+        );
+        if (response.data.exist === true) {
+          setIsFavorite(true);
+        } else {
+          setIsFavorite(false);
+        }
+      } catch (error) {
+        console.log(error.message);
       }
-    }
-    if (check === true) {
-      setIsFavorite(true);
-    } else {
-      setIsFavorite(false);
-    }
-  };
+    };
+    test2();
+  }, []);
 
   return (
-    <div
-      className="gamepage-btn"
-      onClick={() => addFav([data.id, data.background_image, data.name])}
-      // onClick={() => test()}
-    >
+    <div className="gamepage-btn" onClick={() => test()}>
       <div className="gamepage-btn-div1">
         {isFavorite ? (
           <span>Delete from collection</span>
@@ -57,7 +59,6 @@ const AddCollectionButton = (props) => {
         )}
       </div>
       <div className="gamepage-btn-div2">
-        {checkFav(data.id)}
         {isFavorite ? <MdTurnedIn /> : <MdTurnedInNot />}
       </div>
     </div>

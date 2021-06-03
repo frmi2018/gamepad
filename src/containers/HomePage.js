@@ -13,7 +13,7 @@ import Footer from "../components/Footer.js";
 import SearchResult from "../components/SearchResult.js";
 
 const HomePage = (props) => {
-  const { fav, token, setToken, setUserId } = props;
+  const { token, setToken, setUserId } = props;
   // stat
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,12 +23,7 @@ const HomePage = (props) => {
 
   return (
     <div>
-      <Header
-        fav={fav}
-        token={token}
-        setToken={setToken}
-        setUserId={setUserId}
-      />
+      <Header token={token} setToken={setToken} setUserId={setUserId} />
       <MainLogo />
       <Search
         count={count}

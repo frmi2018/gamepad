@@ -13,12 +13,9 @@ import Review from "./containers/Review.js";
 
 const App = () => {
   const [isFavorite, setIsFavorite] = useState(false);
-  let cookie = Cookies.get("fav");
-  const [fav, setFav] = useState((cookie && JSON.parse(cookie)) || []);
   let cookie2 = Cookies.getJSON("user");
   const [token, setToken] = useState((cookie2 && cookie2.token) || undefined);
   const [userId, setUserId] = useState((cookie2 && cookie2.id) || undefined);
-  const [userName, setUserName] = useState("");
 
   return (
     <div className="App">
@@ -33,16 +30,15 @@ const App = () => {
                 userId={userId}
                 isFavorite={isFavorite}
                 setIsFavorite={setIsFavorite}
-                fav={fav}
-                setFav={setFav}
               />
             </Route>
             <Route path="/mycollection">
               <MyCollection
-                fav={fav}
                 token={token}
                 setToken={setToken}
                 setUserId={setUserId}
+                userId={userId}
+                setIsFavorite={setIsFavorite}
               />
             </Route>
             <Route path="/login">
@@ -52,14 +48,14 @@ const App = () => {
               <Review token={token} setToken={setToken} setUserId={setUserId} />
             </Route>
             <Route path="/signup">
-              <SignUp setToken={setToken} setUserId={setUserId} token={token} />
+              <SignUp token={token} setToken={setToken} setUserId={setUserId} />
             </Route>
             <Route path="/">
               <HomePage
                 token={token}
                 setToken={setToken}
                 setUserId={setUserId}
-                fav={fav}
+                userId={userId}
               />
             </Route>
           </Switch>

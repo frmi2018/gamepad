@@ -9,7 +9,7 @@ import Loader from "react-loader-spinner";
 import Card from "./Card.js";
 
 const SearchResult = (props) => {
-  const { setCount, count, search, currentPage, setLastPage } = props;
+  const { setCount, search, currentPage, setLastPage } = props;
   // state
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +52,6 @@ const SearchResult = (props) => {
           <span className="txt italic exo fz400">{search}</span>
           <span className="txt exo fz500"> "</span>
         </div>
-        <span className="txt2 exo fz500">{count} games</span>
       </div>
 
       {/* ------------------- */}

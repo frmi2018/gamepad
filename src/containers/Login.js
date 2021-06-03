@@ -23,15 +23,15 @@ const Login = ({ setToken, setUserId, token }) => {
         password: password,
       };
       try {
-        const response = await axios.post(
-          "http://localhost:4000/user/login",
-          request
-        );
         // const response = await axios.post(
-        //   "https://express-gamepad.herokuapp.com/user/login",
+        //   "http://localhost:4000/user/login",
         //   request
         // );
-        console.log(response.data);
+        const response = await axios.post(
+          "https://express-gamepad.herokuapp.com/user/login",
+          request
+        );
+        // console.log(response.data);
         setToken(response.data.token);
         setUserId(response.data._id);
         Cookies.set(
@@ -69,18 +69,18 @@ const Login = ({ setToken, setUserId, token }) => {
   return (
     <>
       <Header token={token} setToken={setToken} setUserId={setUserId} />
-      <div className="button-pink-txt-div0">
-        <div className="button-pink-txt-div1">
+      <div className="login-div0">
+        <div className="login-div1">
           {/* colonne gauche */}
           <Howdidworks />
           {/* colonne droite */}
-          <div className="button-pink-txt-div3">
-            <div className="button-pink-txt-title">
-              <span className="button-pink-txt-txt1 exo fz500">Login</span>
+          <div className="login-div3">
+            <div className="login-title">
+              <span className="login-txt1 exo fz500">Login</span>
             </div>
             {/* formulaire */}
             <form onSubmit={handleSubmit}>
-              <div className="button-pink-txt-div5">
+              <div className="login-div5">
                 <input
                   type="email"
                   placeholder="Email"
@@ -89,7 +89,7 @@ const Login = ({ setToken, setUserId, token }) => {
                 />
               </div>
 
-              <div className="button-pink-txt-div5">
+              <div className="login-div5">
                 <input
                   type="password"
                   placeholder="Password..."
@@ -103,23 +103,20 @@ const Login = ({ setToken, setUserId, token }) => {
                 type="submit"
                 value="Connexion"
               />
-              {error > 0 ? (
-                error === 1 ? (
-                  <p className="error">
-                    Merci de remplir tous les champs du formulaire
-                  </p>
-                ) : error === 2 ? (
-                  <p className="error">Accès non autorisé</p>
-                ) : error === 3 ? (
-                  <p className="error">Accès non autorisé</p>
-                ) : null
-              ) : (
-                <Link to={`/signup`}>
-                  <span className="signup-txt3 exo fz500">
-                    Don't have an account yet ?
-                  </span>
-                </Link>
-              )}
+              {error === 1 ? (
+                <p className="error">
+                  Merci de remplir tous les champs du formulaire
+                </p>
+              ) : error === 2 ? (
+                <p className="error">Accès non autorisé</p>
+              ) : error === 3 ? (
+                <p className="error">Accès non autorisé</p>
+              ) : null}
+              <Link to={`/signup`}>
+                <span className="signup-txt3 exo fz500">
+                  Don't have an account yet ?
+                </span>
+              </Link>
             </form>
           </div>
         </div>

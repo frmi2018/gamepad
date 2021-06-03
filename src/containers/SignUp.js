@@ -2,7 +2,7 @@ import "./signup.css";
 
 import { useState } from "react";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
@@ -135,29 +135,21 @@ const SignUp = ({ setToken, setUserId, token }) => {
                 type="submit"
                 value="Connexion"
               />
-              {error > 0 ? (
-                error === 1 ? (
-                  <p className="error">
-                    Merci de remplir tous les champs du formulaire
-                  </p>
-                ) : error === 2 ? (
-                  <p className="error">
-                    Vos deux mots de passe ne sont pas identiques
-                  </p>
-                ) : error === 3 ? (
-                  <p className="error">Cet email est déjà utilisé</p>
-                ) : error === 4 ? (
-                  <p className="error">
-                    Ce nom d'utilisateur n'est pas disponible
-                  </p>
-                ) : null
-              ) : (
-                <Link to={`/login`}>
-                  <span className="signup-txt3 exo fz500">
-                    Don't have an account yet ?
-                  </span>
-                </Link>
-              )}
+              {error === 1 ? (
+                <p className="error">
+                  Merci de remplir tous les champs du formulaire
+                </p>
+              ) : error === 2 ? (
+                <p className="error">
+                  Vos deux mots de passe ne sont pas identiques
+                </p>
+              ) : error === 3 ? (
+                <p className="error">Cet email est déjà utilisé</p>
+              ) : error === 4 ? (
+                <p className="error">
+                  Ce nom d'utilisateur n'est pas disponible
+                </p>
+              ) : null}
             </form>
           </div>
         </div>

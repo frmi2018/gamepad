@@ -1,34 +1,63 @@
 import "./mycollection.css";
-
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import Card from "../components/Card.js";
 import { MdTurnedIn } from "react-icons/md";
-import Cookies from "js-cookie";
+import axios from "axios";
+import Loader from "react-loader-spinner";
 
-const MyCollection = ({
-  fav,
-  token,
-  setToken,
-  setUserId,
-  setIsFavorite,
-  setFav,
-}) => {
-  // FAVORIS REMOVE
-  const removeFav = (id) => {
-    let favCopy = [...fav];
-    for (let i = 0; i < favCopy.length; i++) {
-      if (favCopy[i][0] === id) {
-        favCopy.splice(i, 1);
-        setIsFavorite(false);
-      }
+const MyCollection = ({ token, setToken, setUserId, userId }) => {
+  const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const removeFav = async (game) => {
+    try {
+      const request = {
+        userId: userId,
+        gameId: game.gameId,
+        gameName: game.gameName,
+        gamePictureURL: game.gamePictureURL,
+      };
+      const response = await axios.post(
+        // `http://localhost:4000/user/postfavoris`,request
+        `https://express-gamepad.herokuapp.com/user/postfavoris`,
+        request
+      );
+      // console.log(response.data);
+      window.location.reload(false);
+    } catch (error) {
+      console.log(error.message);
     }
-    setFav(favCopy);
-    Cookies.set("fav", favCopy, { expires: 1 });
   };
 
-  return (
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          // `http://localhost:4000/user/getfavoris?userId=${userId}`
+          `https://express-gamepad.herokuapp.com/user/getfavoris?userId=${userId}`
+        );
+        // console.log(response.data);
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
+
+  return isLoading ? (
+    <Loader
+      className="home-loader"
+      type="Grid"
+      color="#ee171f"
+      height={80}
+      width={80}
+    />
+  ) : (
     <>
       <Header token={token} setToken={setToken} setUserId={setUserId} />
       <div className="mycollection-div0">
@@ -40,22 +69,22 @@ const MyCollection = ({
         </div>
 
         <div className="mycollection-div1">
-          {fav.map((game, index) => {
+          {data.listfav.map((game, index) => {
             return (
               <div key={index} className="mycollection-div2">
-                <Link to={`/games/${game[0]}`}>
+                <Link to={`/games/${game.gameId}`}>
                   <Card
-                    key={game[0]}
+                    key={game.gameId}
                     className="card-main"
-                    image={game[1]}
-                    title={game[2]}
+                    image={game.gamePictureURL}
+                    title={game.gameName}
                   />
                 </Link>
 
                 <MdTurnedIn
                   className="turnedin-pink"
                   title={"Click to remove this game from your collection"}
-                  onClick={() => removeFav(game[0])}
+                  onClick={() => removeFav(game)}
                 />
               </div>
             );

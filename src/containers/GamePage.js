@@ -13,18 +13,8 @@ import AddReviewButton from "../components/AddReviewButton.js";
 import ReviewSection from "../components/ReviewSection.js";
 
 const GamePage = (props) => {
-  const {
-    isFavorite,
-    addFav,
-    checkFav,
-    userId,
-    fav,
-    token,
-    setToken,
-    setUserId,
-    setIsFavorite,
-    setFav,
-  } = props;
+  const { isFavorite, userId, token, setToken, setUserId, setIsFavorite } =
+    props;
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -36,7 +26,6 @@ const GamePage = (props) => {
           // `http://localhost:4000/games?id=${id}`
           `https://express-gamepad.herokuapp.com/games?id=${id}`
         );
-        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -44,6 +33,7 @@ const GamePage = (props) => {
       }
     };
     fetchData();
+    console.log("charge jeu");
   }, [id]);
 
   return isLoading ? (
@@ -56,12 +46,7 @@ const GamePage = (props) => {
     />
   ) : (
     <>
-      <Header
-        fav={fav}
-        token={token}
-        setToken={setToken}
-        setUserId={setUserId}
-      />
+      <Header token={token} setToken={setToken} setUserId={setUserId} />
       <span className="exo fz400 gamepage-txt1">{data.name}</span>
       <div className="gamepage-div2">
         <div className="gamepage-div3">
@@ -72,13 +57,10 @@ const GamePage = (props) => {
           {userId && (
             <div className="gamepage-div5">
               <AddCollectionButton
-                addFav={addFav}
                 data={data}
                 isFavorite={isFavorite}
-                checkFav={checkFav}
-                fav={fav}
                 setIsFavorite={setIsFavorite}
-                setFav={setFav}
+                userId={userId}
               />
               <AddReviewButton userId={userId} id={id} />
             </div>
@@ -89,29 +71,72 @@ const GamePage = (props) => {
               <div className="gamepage-div7">
                 <span className="gamepage-txt4">Plateforms</span>
                 {/* gérer un tableau */}
-                {data.platforms.map((value, index) => {
-                  return <span key={index}>{value.platform.name}</span>;
+                {data.platforms.forEach((value, index) => {
+                  if (index < 3) {
+                    if (index < 2 && index !== data.platforms.length - 1) {
+                      return <span key={index}>{value.platform.name},</span>;
+                    } else if (
+                      index < 2 &&
+                      index === data.platforms.length - 1
+                    ) {
+                      return <span key={index}>{value.platform.name}</span>;
+                    } else {
+                      return <span key={index}>{value.platform.name}...</span>;
+                    }
+                  }
                 })}
                 <span className="gamepage-txt4">Released date</span>
                 {/* revoir format date*/}
                 <span>{data.released}</span>
                 <span className="gamepage-txt4">Publisher</span>
                 {/* gérer un tableau */}
-                {data.publishers.map((value, index) => {
-                  return <span key={index}>{value.name}</span>;
+                {data.publishers.forEach((value, index) => {
+                  if (index < 3) {
+                    if (index < 2 && index !== data.publishers.length - 1) {
+                      return <span key={index}>{value.name},</span>;
+                    } else if (
+                      index < 2 &&
+                      index === data.publishers.length - 1
+                    ) {
+                      return <span key={index}>{value.name}</span>;
+                    } else {
+                      return <span key={index}>{value.name}...</span>;
+                    }
+                  }
                 })}
               </div>
               <div className="gamepage-div7">
                 <span className="gamepage-txt4">Genre</span>
                 {/* gérer un tableau */}
-                {data.genres.map((value, index) => {
-                  return <span key={index}>{value.name}</span>;
+                {data.genres.forEach((value, index) => {
+                  if (index < 3) {
+                    if (index < 2 && index !== data.genres.length - 1) {
+                      return <span key={index}>{value.name},</span>;
+                    } else if (index < 2 && index === data.genres.length - 1) {
+                      return <span key={index}>{value.name}</span>;
+                    } else {
+                      return <span key={index}>{value.name}...</span>;
+                    }
+                  }
                 })}
+
                 <span className="gamepage-txt4">developer</span>
                 {/* gérer un tableau */}
-                {data.developers.map((value, index) => {
-                  return <span key={index}>{value.name}</span>;
+                {data.developers.forEach((value, index) => {
+                  if (index < 3) {
+                    if (index < 2 && index !== data.developers.length - 1) {
+                      return <span key={index}>{value.name},</span>;
+                    } else if (
+                      index < 2 &&
+                      index === data.developers.length - 1
+                    ) {
+                      return <span key={index}>{value.name}</span>;
+                    } else {
+                      return <span key={index}>{value.name}...</span>;
+                    }
+                  }
                 })}
+
                 <span className="gamepage-txt4">Age rating</span>
                 <span>4</span>
               </div>

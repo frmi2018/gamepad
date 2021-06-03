@@ -18,54 +18,7 @@ const App = () => {
   let cookie2 = Cookies.getJSON("user");
   const [token, setToken] = useState((cookie2 && cookie2.token) || undefined);
   const [userId, setUserId] = useState((cookie2 && cookie2.id) || undefined);
-
-  // FAVORIS ADD/REMOVE
-  const addFav = (tab) => {
-    let favCopy = [...fav];
-    let check = false;
-    for (let i = 0; i < favCopy.length; i++) {
-      if (favCopy[i][0] === tab[0]) {
-        favCopy.splice(i, 1);
-        setIsFavorite(false);
-        check = true;
-      }
-    }
-    if (check === false) {
-      favCopy.push(tab);
-      setIsFavorite(true);
-    }
-    setFav(favCopy);
-    Cookies.set("fav", favCopy, { expires: 1 });
-  };
-
-  // FAVORIS REMOVE
-  const removeFav = (id) => {
-    let favCopy = [...fav];
-    for (let i = 0; i < favCopy.length; i++) {
-      if (favCopy[i][0] === id) {
-        favCopy.splice(i, 1);
-        setIsFavorite(false);
-      }
-    }
-    setFav(favCopy);
-    Cookies.set("fav", favCopy, { expires: 1 });
-  };
-
-  // FAVORIS CHECK
-  const checkFav = (id) => {
-    let favCopy = [...fav];
-    let check = false;
-    for (let i = 0; i < favCopy.length; i++) {
-      if (favCopy[i][0] === id) {
-        check = true;
-      }
-    }
-    if (check === true) {
-      setIsFavorite(true);
-    } else {
-      setIsFavorite(false);
-    }
-  };
+  const [userName, setUserName] = useState("");
 
   return (
     <div className="App">
@@ -74,27 +27,26 @@ const App = () => {
           <Switch>
             <Route path="/games/:id">
               <GamePage
-                fav={fav}
                 token={token}
-                isFavorite={isFavorite}
-                addFav={addFav}
-                checkFav={checkFav}
                 setToken={setToken}
-                userId={userId}
                 setUserId={setUserId}
+                userId={userId}
+                isFavorite={isFavorite}
+                setIsFavorite={setIsFavorite}
+                fav={fav}
+                setFav={setFav}
               />
             </Route>
             <Route path="/mycollection">
               <MyCollection
                 fav={fav}
-                removeFav={removeFav}
                 token={token}
                 setToken={setToken}
                 setUserId={setUserId}
               />
             </Route>
             <Route path="/login">
-              <Login setToken={setToken} setUserId={setUserId} token={token} />
+              <Login token={token} setToken={setToken} setUserId={setUserId} />
             </Route>
             <Route path="/review">
               <Review token={token} setToken={setToken} setUserId={setUserId} />
@@ -104,10 +56,10 @@ const App = () => {
             </Route>
             <Route path="/">
               <HomePage
-                fav={fav}
                 token={token}
                 setToken={setToken}
                 setUserId={setUserId}
+                fav={fav}
               />
             </Route>
           </Switch>

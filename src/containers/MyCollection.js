@@ -5,8 +5,29 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 import Card from "../components/Card.js";
 import { MdTurnedIn } from "react-icons/md";
+import Cookies from "js-cookie";
 
-const MyCollection = ({ fav, removeFav, token, setToken, setUserId }) => {
+const MyCollection = ({
+  fav,
+  token,
+  setToken,
+  setUserId,
+  setIsFavorite,
+  setFav,
+}) => {
+  // FAVORIS REMOVE
+  const removeFav = (id) => {
+    let favCopy = [...fav];
+    for (let i = 0; i < favCopy.length; i++) {
+      if (favCopy[i][0] === id) {
+        favCopy.splice(i, 1);
+        setIsFavorite(false);
+      }
+    }
+    setFav(favCopy);
+    Cookies.set("fav", favCopy, { expires: 1 });
+  };
+
   return (
     <>
       <Header token={token} setToken={setToken} setUserId={setUserId} />

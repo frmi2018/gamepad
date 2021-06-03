@@ -22,6 +22,8 @@ const GamePage = (props) => {
     token,
     setToken,
     setUserId,
+    setIsFavorite,
+    setFav,
   } = props;
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -74,6 +76,9 @@ const GamePage = (props) => {
                 data={data}
                 isFavorite={isFavorite}
                 checkFav={checkFav}
+                fav={fav}
+                setIsFavorite={setIsFavorite}
+                setFav={setFav}
               />
               <AddReviewButton userId={userId} id={id} />
             </div>

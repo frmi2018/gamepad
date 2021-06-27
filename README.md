@@ -8,7 +8,7 @@ in progress...
 
 A project FullStack with Express/Axios to learn React started during my training at https://www.lereacteur.io/
 
-<img src="https://github.com/frmi2018/gamepad/blob/main/screen.png" width="960" height=auto>   
+![alt text](https://github.com/frmi2018/gamepad/blob/main/screen.png?raw=true) 
 
 ## Get the Code
 
@@ -18,4 +18,4 @@ $ git clone https://github.com/frmi2018/gamepad.git
 
 ## Website
 
-https://frmi-marvel-api.netlify.app/
+https://frmi-gamepad.netlify.app/

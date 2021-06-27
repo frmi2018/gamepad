@@ -1,6 +1,7 @@
 # GamePad
 
 📅 started april 2021  
+Developed with Visual Studio Code on Windows 10  
 in progress...
 
 ## To do that ?

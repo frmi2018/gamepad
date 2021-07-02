@@ -6,7 +6,8 @@ in progress...
 
 ## To do that ?
 
-To learn to devevelop a full-stack React project.  
+To make a Full-stack project.  
+To practise [React](https://fr.reactjs.org/) / [MongoDB](https://www.mongodb.com/) and [HTML/CSS](https://www.w3schools.com/).  
 Started during my training at https://www.lereacteur.io/
 
 ![alt text](https://github.com/frmi2018/gamepad/blob/main/screen.png?raw=true) 

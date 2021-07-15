@@ -21,7 +21,7 @@ const MostRecent = (props) => {
       try {
         const response = await axios.get(
           // `http://localhost:4000/games?pagesize=5&page=${currentPage}&ordering=added`
-          `https://express-gamepad.herokuapp.com/games?pagesize=5&page=${currentPage}&ordering=added`
+          `https://gamepad-frmi-api.herokuapp.com/games?pagesize=5&page=${currentPage}&ordering=added`
         );
         // console.log(response.data);
         setData(response.data);
@@ -29,7 +29,7 @@ const MostRecent = (props) => {
         setLastPage(Math.ceil(response.data.count / 5));
         setIsLoading(false);
       } catch (error) {
-        console.log(error.message);
+        console.log(error.response.data.message);
       }
     };
     fetchData();

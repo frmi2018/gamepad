@@ -28,7 +28,7 @@ const Login = ({ setToken, setUserId, token }) => {
         //   request
         // );
         const response = await axios.post(
-          "https://express-gamepad.herokuapp.com/user/login",
+          "https://gamepad-frmi-api.herokuapp.com/user/login",
           request
         );
         // console.log(response.data);

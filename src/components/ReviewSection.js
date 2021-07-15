@@ -17,12 +17,12 @@ const ReviewSection = ({ id }) => {
       try {
         const response = await axios.get(
           // `http://localhost:4000/user/getreview?id=${id}`
-          `https://express-gamepad.herokuapp.com/user/getreview?id=${id}`
+          `https://gamepad-frmi-api.herokuapp.com/user/getreview?id=${id}`
         );
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.message);
+        console.log(error.response.data.message);
       }
     };
     fetchData();

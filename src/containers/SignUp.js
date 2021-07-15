@@ -30,10 +30,10 @@ const SignUp = ({ setToken, setUserId, token }) => {
         };
         try {
           const response = await axios.post(
-            "https://express-gamepad.herokuapp.com/user/signup",
+            "https://gamepad-frmi-api.herokuapp.com/user/signup",
             request
           );
-          console.log(response.data);
+          // console.log(response.data);
           setToken(response.data.token);
           setUserId(response.data._id);
           history.push("/");
@@ -118,15 +118,6 @@ const SignUp = ({ setToken, setUserId, token }) => {
                   placeholder="Confirm Password"
                   value={confirmPassword}
                   onChange={handleConfirmPasswordChange}
-                />
-              </div>
-              <div className="signup-div5 exo fz500">
-                <input
-                  type="file"
-                  placeholder="Add a Photo"
-                  onChange={(event) => {
-                    console.log(event.target.files);
-                  }}
                 />
               </div>
 

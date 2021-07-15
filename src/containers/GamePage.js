@@ -24,16 +24,15 @@ const GamePage = (props) => {
       try {
         const response = await axios.get(
           // `http://localhost:4000/games?id=${id}`
-          `https://express-gamepad.herokuapp.com/games?id=${id}`
+          `https://gamepad-frmi-api.herokuapp.com/games?id=${id}`
         );
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.message);
+        console.log(error.response.data.message);
       }
     };
     fetchData();
-    console.log("charge jeu");
   }, [id]);
 
   return isLoading ? (

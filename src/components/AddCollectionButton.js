@@ -17,7 +17,7 @@ const AddCollectionButton = (props) => {
       const response = await axios.post(
         // `http://localhost:4000/user/postfavoris`,
         // request
-        `https://express-gamepad.herokuapp.com/user/postfavoris`,
+        `https://gamepad-frmi-api.herokuapp.com/user/postfavoris`,
         request
       );
       if (response.data.message === "game added") {
@@ -26,7 +26,7 @@ const AddCollectionButton = (props) => {
         setIsFavorite(false);
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response.data.message);
     }
   };
 
@@ -35,7 +35,7 @@ const AddCollectionButton = (props) => {
       try {
         const response = await axios.get(
           // `http://localhost:4000/user/getfavoris?userId=${userId}&gameId=${data.id}`
-          `https://express-gamepad.herokuapp.com/user/getfavoris?userId=${userId}&gameId=${data.id}`
+          `https://gamepad-frmi-api.herokuapp.com/user/getfavoris?userId=${userId}&gameId=${data.id}`
         );
         if (response.data.exist === true) {
           setIsFavorite(true);
@@ -43,7 +43,7 @@ const AddCollectionButton = (props) => {
           setIsFavorite(false);
         }
       } catch (error) {
-        console.log(error.message);
+        console.log(error.response.data.message);
       }
     };
     test2();

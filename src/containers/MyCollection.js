@@ -22,13 +22,13 @@ const MyCollection = ({ token, setToken, setUserId, userId }) => {
       };
       const response = await axios.post(
         // `http://localhost:4000/user/postfavoris`,request
-        `https://express-gamepad.herokuapp.com/user/postfavoris`,
+        `https://gamepad-frmi-api.herokuapp.com/user/postfavoris`,
         request
       );
       // console.log(response.data);
       window.location.reload(false);
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response.data.message);
     }
   };
 
@@ -37,13 +37,13 @@ const MyCollection = ({ token, setToken, setUserId, userId }) => {
       try {
         const response = await axios.get(
           // `http://localhost:4000/user/getfavoris?userId=${userId}`
-          `https://express-gamepad.herokuapp.com/user/getfavoris?userId=${userId}`
+          `https://gamepad-frmi-api.herokuapp.com/user/getfavoris?userId=${userId}`
         );
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.message);
+        console.log(error.response.data.message);
       }
     };
     fetchData();

@@ -32,7 +32,7 @@ const Review = ({ token, setToken, setUserId }) => {
           };
           try {
             await axios.post(
-              "https://express-gamepad.herokuapp.com/user/postreview",
+              "https://gamepad-frmi-api.herokuapp.com/user/postreview",
               request
             );
             // console.log(response.data);
